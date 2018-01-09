@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/09/rsync的使用与配置/index.html">
 <meta property="og:site_name" content="并非菜鸟的博客">
 <meta property="og:description" content="rsync的使用与配置">
-<meta property="og:updated_time" content="2018-01-09T06:12:01.395Z">
+<meta property="og:updated_time" content="2018-01-09T06:34:27.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rsync的使用与配置">
 <meta name="twitter:description" content="rsync的使用与配置">
@@ -221,7 +221,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="一、什么是rsync"><a href="#一、什么是rsync" class="headerlink" title="一、什么是rsync"></a>一、什么是rsync</h2><p><strong>rsync</strong>，remote synchronize顾名思意就知道它是一款实现远程同步功能的软件，它在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。 rsync是用 “rsync 算法”提供了一个客户机和远程文件服务器的文件同步的快速方法，而且可以通过ssh方式来传输文件，这样其保密性也非常好，另外它还是免费的软件。</p>
-<h2 id="二、rsync的安装"><a href="#二、rsync的安装" class="headerlink" title="二、rsync的安装"></a>二、rsync的安装</h2><p>rysnc的官方网站：<a href="http://rsync.samba.org" target="_blank" rel="noopener">http://rsync.samba.org</a><br>可以从上面得到最新的版本。目前最新版是3.05。当然，因为rsync是一款如此有用的软件，所以很多Linux的发行版本都将它收录在内了。</p>
+<h2 id="二、rsync的安装"><a href="#二、rsync的安装" class="headerlink" title="二、rsync的安装"></a>二、rsync的安装</h2><p>rysnc的官方网站：<a href="http://rsync.samba.org" target="_blank" rel="noopener">http://rsync.samba.org</a><br>可以从上面得到最新的版本。目前最新版是3.1.2。当然，因为rsync是一款如此有用的软件，所以很多Linux的发行版本都将它收录在内了。</p>
 <a id="more"></a>
 <p>　　软件包安装</p>
 <table>
@@ -276,7 +276,7 @@
 <p>　　# rsync  –list-only  root@192.168.145.5::<br>　　++++++++++++++++++++++++++++++++++++++++++++++<br>　　Welcome to use the mike.org.cn rsync services!<br>    　　       2002——2009<br>　　++++++++++++++++++++++++++++++++++++++++++++++</p>
 <p>　　rhel4home       This is RHEL 4 data</p>
 <p>　 　注：前面是rsync所提供的数据源，也就是我们在rsyncd.conf中所写的[rhel4home]模块。而“This is RHEL 4 data”是由[rhel4home]模块中的 comment = This is RHEL 4 data 提供的；为什么没有把rhel4opt数据源列出来呢？因为我们在[rhel4opt]中已经把list=no了。</p>
-<p>　　$ rsync  –list-only  root@192.168.145.5::::rhel4home </p>
+<p>　　$ rsync  –list-only  root@192.168.145.5::rhel4home </p>
 <p>　　++++++++++++++++++++++++++++++++++++++++++++++<br>　　Welcome to use the mike.org.cn rsync services!<br> 　　          2002——2009<br>　　++++++++++++++++++++++++++++++++++++++++++++++</p>
 <p>　　Password:<br>　　drwxr-xr-x        4096 2009/03/15 21:33:13 .<br>　　-rw-r–r–        1018 2009/03/02 02:33:41 ks.cfg<br>　　-rwxr-xr-x       21288 2009/03/15 21:33:13 wgetpaste<br>　　drwxrwxr-x        4096 2008/10/28 21:04:05 cvsroot<br>　　drwx——        4096 2008/11/30 16:30:58 easylife<br>　　drwsr-sr-x        4096 2008/09/20 22:18:05 giddir<br>　　drwx——        4096 2008/09/29 14:18:46 quser1<br>　　drwx——        4096 2008/09/27 14:38:12 quser2<br>　　drwx——        4096 2008/11/14 06:10:19 test<br>　　drwx——        4096 2008/09/22 16:50:37 vbird1<br>　　drwx——        4096 2008/09/19 15:28:45 vbird2</p>
 <p>　　后面的root@ip中，root是指定密码文件中的用户名，之后的::rhel4home这是rhel4home模块名</p>
@@ -296,7 +296,7 @@
 <p>　　step1：创建同步脚本和密码文件<br>　　<br>　　#mkdir   /etc/cron.daily.rsync<br>　　#cd  /etc/cron.daily.rsync<br>　　#touch rhel4home.sh  rhel4opt.sh<br>　　#chmod 755 /etc/cron.daily.rsync/<em>.sh<br>　　#mkdir /etc/rsyncd/<br>　　#touch /etc/rsyncd/rsyncrhel4root.secrets<br>　　#touch /etc/rsyncd/rsyncrhel4easylife.secrets<br>　　#chmod 600  /etc/rsyncd/rsync.</em></p>
 <p>　 　注： 我们在 /etc/cron.daily/中创建了两个文件rhel4home.sh和rhel4opt.sh ，并且是权限是755的。创建了两个密码文件root用户用的是rsyncrhel4root.secrets ，easylife用户用的是 rsyncrhel4easylife.secrets，权限是600；</p>
 <p>　　我们编辑rhel4home.sh，内容是如下的：</p>
-<p>　　#!/bin/sh<br>　　#backup 192.168.145.5:/home<br>　　/usr/bin/rsync   -avzP  –password-file=/etc/rsyncd/rsyncrhel4root.password   root@192.168.145.5::rhel4home   /home/rhel4homebak/$(date +’%m-%d-%y’)</p>
+<p>　　#!/bin/sh<br>　　#backup 192.168.145.5:/home<br>　　/usr/bin/rsync   -avzP  –password-file=/etc/rsyncd/rsyncrhel4root.secrets    root@192.168.145.5::rhel4home   /home/rhel4homebak/$(date +’%m-%d-%y’)</p>
 <p>　　我们编辑 rhel4opt.sh ，内容是：</p>
 <p>　　#!/bin/sh<br>　　#backup 192.168.145.5:/opt<br>　　/usr/bin/rsync   -avzP  –password-file=/etc/rsyncd/rsyncrhel4easylife.secrets    easylife@192.168.145.5::rhel4opt   /home/rhel4hoptbak/$(date +’%m-%d-%y’)</p>
 <p>　　注：你可以把rhel4home.sh和rhel4opt.sh的内容合并到一个文件中，比如都写到rhel4bak.sh中；</p>
@@ -573,11 +573,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>
