@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/6 | 并非菜鸟的博客</title>
+  <title>《Thinking in java》读书笔记(11) | 并非菜鸟的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="并非菜鸟的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
+  <meta name="description" content="《Thinking in java》读书笔记(11)">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Thinking in java》读书笔记(11)">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/《Thinking-in-java》读书笔记-11/index.html">
 <meta property="og:site_name" content="并非菜鸟的博客">
+<meta property="og:description" content="《Thinking in java》读书笔记(11)">
+<meta property="og:updated_time" content="2018-01-10T03:41:49.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="并非菜鸟的博客">
+<meta name="twitter:title" content="《Thinking in java》读书笔记(11)">
+<meta name="twitter:description" content="《Thinking in java》读书笔记(11)">
   
     <link rel="alternative" href="/atom.xml" title="并非菜鸟的博客" type="application/atom+xml">
   
@@ -195,36 +200,103 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-《Thinking-in-java》读书笔记-11" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      《Thinking in java》读书笔记(11)
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/22/《Thinking-in-java》读书笔记-11/" class="archive-article-date">
+
+        
+        <a href="/2017/06/22/《Thinking-in-java》读书笔记-11/" class="archive-article-date">
   	<time datetime="2017-06-22T03:27:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/22/《Thinking-in-java》读书笔记-11/">《Thinking in java》读书笔记(11)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第二章-一切都是对象"><a href="#第二章-一切都是对象" class="headerlink" title="第二章 一切都是对象"></a>第二章 一切都是对象</h1><h2 id="2-7你的第一个Java程序"><a href="#2-7你的第一个Java程序" class="headerlink" title="2.7你的第一个Java程序"></a>2.7你的第一个Java程序</h2><p>最后，让我们编写第一个完整的程序。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HelloDate.java</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloDate</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello, it's: "</span>);</span><br><span class="line">		System.out.println(<span class="keyword">new</span> Date());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>在每个程序文件的开头，必须声明import语句，以便引入在文件代码中需要用到的额外类。<br>我们可以看到<strong>System</strong>类有很多属性，我们选择<strong>out</strong>,就会发现它是一个静态<strong>PrintStream</strong>对象。因为是静态的，所以不需要创建任何对象，就可以直接使用。<br>还有一个我们需要注意，就是类名和文件名要相同。<br>main()方法的参数是一个String对象的数组，在这个程序中并未用到args，但是Java编译器要求必须这样做，因为args要用来存储命令行参数。<br>System有很多其他的方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: object/ShowProperties.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShowProperties</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.getProperties.list(System.out);</span><br><span class="line">		System.out.println(System.getProperty(<span class="string">"user.name"</span>));</span><br><span class="line">		System.out.println(System.getProperty(<span class="string">"java.library.path"</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;  <span class="comment">///:~</span></span><br></pre></td></tr></table></figure></p>
+<p>main()的第一行将显示从运行程序的系统中获取的所有“属性”，因此它可以向你提供环境信息。list()方法将结果发送给它的参数：System.out。</p>
+<h3 id="2-7-1-编译和运行"><a href="#2-7-1-编译和运行" class="headerlink" title="2.7.1 编译和运行"></a>2.7.1 编译和运行</h3><p>要编译和运行程序，首先得需要一个Java的开发环境。我们可以登录到Oracle的官网下载与自己机器平台相兼容的JDK。<br>可以通过<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac HelloDate.java</span><br></pre></td></tr></table></figure></p>
+<p>进行编译，正常情况下么不会产生任何响应，如果有任何错误消息返回给你，就说明你可能没有正确安装JDK，或者你的代码有问题。<br>编译成功后，可以通过<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java HelloDate</span><br></pre></td></tr></table></figure></p>
+<p>来运行编译成功的程序。可以看到当天的日期被输出。</p>
+<h2 id="2-8-注释和嵌入式文档"><a href="#2-8-注释和嵌入式文档" class="headerlink" title="2.8 注释和嵌入式文档"></a>2.8 注释和嵌入式文档</h2><p>Java有两种注释风格。<br>第一种：传统的C语言风格的注释，C++也继承了这种风格，以“/”开始，随后是注释内容，可以跨越多行，最后以“/”结束。许多程序员在连续的注释内容的第一行都以“*”开头，所以经常看到以下写法。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This is a comment</span></span><br><span class="line"><span class="comment"> * that continues</span></span><br><span class="line"><span class="comment"> * across lines</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></p>
+<p>但是和以下这种方式没有区别。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	This is a comment that </span></span><br><span class="line"><span class="comment">	continues across lines</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<p>第二种风格也是源于C++。这种注释是“单行注释”，以“//”起头。直到句末。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This is a one-line commnet</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-8-1注释文档"><a href="#2-8-1注释文档" class="headerlink" title="2.8.1注释文档"></a>2.8.1注释文档</h3><p>代码文档撰写的最大问题，大概就是对文档的维护了。如果代码和文档是分离的，那么在每次修改代码时，都需要修改相应的文档。那么java帮助你把代码和文档放在一个文件内，方便修改。<br>javadoc便是用于提取代码文件中的注释的工具，它是JDK安装的一部分。javadoc输出的是一个HTML文件，可以使用WEB浏览器查看。</p>
+<h3 id="2-8-2语法"><a href="#2-8-2语法" class="headerlink" title="2.8.2语法"></a>2.8.2语法</h3><p>所有javadoc命令都只能在“/<em>”注释中出现，和通常一样，注释结束于“/”。使用javadoc的方式主要有两种：嵌入HTML，或使用“文档标签”。<em>*独立文档标签</em></em>是一些以“@”字符开头的命令，且要置于注释行的最前面。而“行内文档标签”则可以出现在javadoc的任何地方。它们也是以“@”开头<br>，但要在花括号内。<br>共有三种类型的注释文档，分别对应注释位置后面的三种元素：类、域和方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: object/Documentation1.java</span></span><br><span class="line"><span class="comment">/** A class comment */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Documentation1</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** A filed comment */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> i;</span><br><span class="line">	<span class="comment">/** A method comment */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.getProperties().list(System.out);</span><br><span class="line">		System.out.println(System.getProperty(<span class="string">"user.name"</span>));</span><br><span class="line">		System.out.println(System.getProperty(<span class="string">"java.library.path"</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="comment">///:~</span></span><br></pre></td></tr></table></figure></p>
+<p>注意，javadoc只能为<strong>public</strong>（公共）和<strong>protected</strong>（受保护）成员进行文档注释。<strong>private</strong>(私有)和包内可访问成员的注释会被忽落掉。<br>不过可以通过用-private进行标记，一边输出private成员的注释。</p>
+<h3 id="2-8-3嵌入式HTML"><a href="#2-8-3嵌入式HTML" class="headerlink" title="2.8.3嵌入式HTML"></a>2.8.3嵌入式HTML</h3><p>javadoc通过生产的HTML文档传送HTML命令，这使你能够充分利用HTML。当然，主要目的还是为了对代码进行格式化。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: obejct/Documentation2.java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * &lt;pre&gt;</span></span><br><span class="line"><span class="comment"> * System.out.println(new Date());</span></span><br><span class="line"><span class="comment"> * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment"> * /</span></span><br><span class="line"><span class="comment">///:~</span></span><br></pre></td></tr></table></figure></p>
+<p>也可以像WEB那样运用HTML，对普通文本按照你自己所描述的进行格式化：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: object/Documentation3.java</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * You can &lt;em&gt;even&lt;/em&gt; insert a list:</span></span><br><span class="line"><span class="comment"> * &lt;ol&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt; Item one</span></span><br><span class="line"><span class="comment"> * &lt;li&gt; Item two</span></span><br><span class="line"><span class="comment"> * &lt;li&gt; Item three</span></span><br><span class="line"><span class="comment"> * &lt;/ol&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">///:~</span></span><br></pre></td></tr></table></figure></p>
+<p>不要在嵌入式HTML中使用标题标签，如h1和hr，因为会和javadoc的产生冲突。<br>所有类型的注释文档—–类、域和方法—-都支持嵌入式HTML。</p>
+<h3 id="2-8-4一些标签示例"><a href="#2-8-4一些标签示例" class="headerlink" title="2.8.4一些标签示例"></a>2.8.4一些标签示例</h3><p>这里介绍一些可用于代码文档的javadoc标签。</p>
+<h5 id="1-see-引用其他类"><a href="#1-see-引用其他类" class="headerlink" title="1.@see:引用其他类"></a>1.@see:引用其他类</h5><p>@see标签允许用户引用其他类的文档。javadoc会在其生产的HTML文件中，通过@see标签链接到其他文档。格式如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@see</span> classname</span><br><span class="line"><span class="meta">@see</span> fully-qualified-classname</span><br><span class="line">@see fully-qualified-classname#method-name</span><br></pre></td></tr></table></figure></p>
+<p>上述每种格式都会在生产的文档中加入一个具有超链接的“See Also”(参见)条目，但是javadoc不会检查你所提供的超链接是否有效。</p>
+<h5 id="2-link-package-class-member-label"><a href="#2-link-package-class-member-label" class="headerlink" title="2.{@link package.class#member label}"></a>2.{@link package.class#member label}</h5><p>该标签与@see极其相似，只是它用于行内，并且是用“label”作为超链接文本而不用“See Also”。</p>
+<h5 id="3-docRoot"><a href="#3-docRoot" class="headerlink" title="3.{@docRoot}"></a>3.{@docRoot}</h5><p>该标签产生到文档根目录的相对路径，用于文档树页面的显式超链接。</p>
+<h5 id="4-inheritDoc"><a href="#4-inheritDoc" class="headerlink" title="4.{@inheritDoc}"></a>4.{@inheritDoc}</h5><p>该标签从当前这个类的最直接的基类中继承相关文档到当前文档注释中。</p>
+<h5 id="5-version"><a href="#5-version" class="headerlink" title="5.@version"></a>5.@version</h5><p>该标签的格式如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@version</span> version-information</span><br></pre></td></tr></table></figure></p>
+<p>其中“version-information”可以是任何你认为适合包含在版本说明中的重要信息。如果javadoc命令使用了“-version”标记，那么就从生成的HTML文档中特别提取版本信息。</p>
+<h5 id="6-author"><a href="#6-author" class="headerlink" title="6.@author"></a>6.@author</h5><p>该标签格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@author</span> author-information</span><br></pre></td></tr></table></figure></p>
+<p>其中“author-information”可以是任何你认为适合包含在作者说明中的任何信息，如电子邮件等。如果javadoc命令使用了“-author”标记，那么就从生成的HTML文档中特别提取作者信息。<br>可以使用多个标签，以便列出所有作者。但是它们必须连续。</p>
+<h5 id="7-since"><a href="#7-since" class="headerlink" title="7.@since"></a>7.@since</h5><p>该标签允许你指定程序代码最早使用的版本，可以再HTML java文档中看到它们被用来指定所用的JDK版本情况。</p>
+<h5 id="8-param"><a href="#8-param" class="headerlink" title="8.@param"></a>8.@param</h5><p>该标签用于方法文档中，形式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@param</span> parameter-name description</span><br></pre></td></tr></table></figure></p>
+<p>其中，parameter-name是方法的参数列表中的标识符，description是可以延迟数行的文本，终止于新的文档标签出现之前。可以使用任意多种标签，大约每个参数都有一个这样的标签。</p>
+<h5 id="9-return"><a href="#9-return" class="headerlink" title="9.@return"></a>9.@return</h5><p>该标签用于方法文档中，格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@return</span> description</span><br></pre></td></tr></table></figure></p>
+<p>其中，“description”用来描述返回值的含义，可以延续数行。</p>
+<h5 id="10-throws"><a href="#10-throws" class="headerlink" title="10.@throws"></a>10.@throws</h5><p>“异常”，它们是由于某个方法调用失败而“抛出”的对象。格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@throws</span> fully-qualified-<span class="class"><span class="keyword">class</span>-<span class="title">name</span> <span class="title">description</span></span></span><br></pre></td></tr></table></figure></p>
+<p>其中fully-qualified-class-name给出一个异常类的无歧义的名字。而该异常类在别处定义。description告诉你为什么此特殊的异常会在方法调用中出现。</p>
+<h5 id="11-deprecated"><a href="#11-deprecated" class="headerlink" title="11.@deprecated"></a>11.@deprecated</h5><p>该标签用于支出一些旧特性已由改进的新特性取代。如果使用@deprecated标记的方法，则编译器会发布警告。<br>在java SE5中，javadoc标签@deprecated已经被@Deprecated注解所替代。</p>
+<h3 id="2-8-5文档示例"><a href="#2-8-5文档示例" class="headerlink" title="2.8.5文档示例"></a>2.8.5文档示例</h3><p>下面再回到第一个Java程序，但这次加上了文档注解。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//: object/HelloDate.java</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">/** The first Thinking in Java example program.</span></span><br><span class="line"><span class="comment"> * Display a string and today's date.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Bruce Eckel</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> www.MindView.net</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 4.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloDate</span></span>&#123;</span><br><span class="line">	<span class="comment">/** Entry point to class &amp; application.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args array of string arguments</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> exception No exceptions throw</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello, it's: "</span>);</span><br><span class="line">		System.out.println(<span class="keyword">new</span> Date());</span><br><span class="line">	&#125; </span><br><span class="line">&#125; <span class="comment">/* Output: (55% match)</span></span><br><span class="line"><span class="comment">Hello, it's:</span></span><br><span class="line"><span class="comment">Wed Oct 05 14:39:36 MDT 2005</span></span><br><span class="line"><span class="comment">*/</span><span class="comment">//:~</span></span><br></pre></td></tr></table></figure></p>
+<p>在这里用“：”作为特殊记号说明这是包含源文件名的注释行。<br>而“///:~”代表源代码清单的结束。</p>
+<h2 id="2-9编码风格"><a href="#2-9编码风格" class="headerlink" title="2.9编码风格"></a>2.9编码风格</h2><p>在“Java编程语言编码约定”中，代码风格是这样规定的：类名的首字母要大写，如果类名由多个单词构成，那么把它们并在一起，其中每个内部单词的首字母都采用大写形式。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllTheColorsOfTheRainbow</span></span>&#123; <span class="comment">//...</span></span><br></pre></td></tr></table></figure></p>
+<p>这种风格成为“驼峰风格”。其它所有内容—–方法、字段（成员变量）以及对象引用名称等，公认的风格与类的风格一样，只是标识符第一个字母采用小写。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllTheColorsOfTheRainbow</span></span>&#123; </span><br><span class="line">	<span class="keyword">int</span> anIntegerRepresentingColors;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">changeTheHueOfTheColor</span><span class="params">(<span class="keyword">int</span> newHue)</span></span>&#123;</span><br><span class="line">		<span class="comment">//...</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -236,380 +308,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/06/22/《Thinking-in-java》读书笔记-11/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/《Thinking-in-java》读书笔记-10/" class="archive-article-date">
-  	<time datetime="2017-06-21T03:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/07/05/做决定看似简单其实很难/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          做决定看似简单其实很难
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/21/《Thinking-in-java》读书笔记-10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Thinking in java》读书笔记(10)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/《Thinking-in-java》读书笔记-10/">《Thinking in java》读书笔记(10)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/17/《Thinking-in-java》读书笔记-9/" class="archive-article-date">
-  	<time datetime="2017-06-17T02:56:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/17/《Thinking-in-java》读书笔记-9/">《Thinking in java》读书笔记(9)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/15/《Thinking-in-java》读书笔记-8/" class="archive-article-date">
-  	<time datetime="2017-06-15T10:24:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/15/《Thinking-in-java》读书笔记-8/">《Thinking in java》读书笔记(8)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/14/《Thinking-in-java》读书笔记-7/" class="archive-article-date">
-  	<time datetime="2017-06-14T10:36:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/14/《Thinking-in-java》读书笔记-7/">《Thinking in java》读书笔记(7)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/14/一些想法/" class="archive-article-date">
-  	<time datetime="2017-06-14T09:28:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/14/一些想法/">一些想法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/12/《Thinking-in-java》读书笔记-6/" class="archive-article-date">
-  	<time datetime="2017-06-12T10:14:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/12/《Thinking-in-java》读书笔记-6/">《Thinking in java》读书笔记(6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/10/《Thinking-in-java》读书笔记-5/" class="archive-article-date">
-  	<time datetime="2017-06-10T10:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/10/《Thinking-in-java》读书笔记-5/">《Thinking in java》读书笔记(5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/《Thinking-in-java》读书笔记-4/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/《Thinking-in-java》读书笔记-4/">《Thinking in java》读书笔记(4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/决定/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:26:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/决定/">决定</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/06/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/06/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -633,8 +439,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

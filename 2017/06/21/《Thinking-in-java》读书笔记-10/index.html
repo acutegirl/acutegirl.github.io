@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/6 | 并非菜鸟的博客</title>
+  <title>《Thinking in java》读书笔记(10) | 并非菜鸟的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="并非菜鸟的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
+  <meta name="description" content="《Thinking in java》读书笔记(10)">
+<meta name="keywords" content="读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Thinking in java》读书笔记(10)">
+<meta property="og:url" content="http://yoursite.com/2017/06/21/《Thinking-in-java》读书笔记-10/index.html">
 <meta property="og:site_name" content="并非菜鸟的博客">
+<meta property="og:description" content="《Thinking in java》读书笔记(10)">
+<meta property="og:updated_time" content="2018-01-10T03:20:41.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="并非菜鸟的博客">
+<meta name="twitter:title" content="《Thinking in java》读书笔记(10)">
+<meta name="twitter:description" content="《Thinking in java》读书笔记(10)">
   
     <link rel="alternative" href="/atom.xml" title="并非菜鸟的博客" type="application/atom+xml">
   
@@ -195,74 +200,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-《Thinking-in-java》读书笔记-10" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/22/《Thinking-in-java》读书笔记-11/" class="archive-article-date">
-  	<time datetime="2017-06-22T03:27:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/22/《Thinking-in-java》读书笔记-11/">《Thinking in java》读书笔记(11)</a>
+    <h1 class="article-title" itemprop="name">
+      《Thinking in java》读书笔记(10)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/21/《Thinking-in-java》读书笔记-10/" class="archive-article-date">
+        
+        <a href="/2017/06/21/《Thinking-in-java》读书笔记-10/" class="archive-article-date">
   	<time datetime="2017-06-21T03:12:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/21/《Thinking-in-java》读书笔记-10/">《Thinking in java》读书笔记(10)</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第二章-一切都是对象"><a href="#第二章-一切都是对象" class="headerlink" title="第二章 一切都是对象"></a>第二章 一切都是对象</h1><h2 id="2-5方法、参数和返回值"><a href="#2-5方法、参数和返回值" class="headerlink" title="2.5方法、参数和返回值"></a>2.5方法、参数和返回值</h2><p>许多程序设计语言（像C和C++）用<strong>函数</strong>这个术语来描述命名子程序；而在Java里却常用<strong>方法</strong>这个术语来表示。</p>
+<p>Java的方法决定了一个对象能够接收什么样的消息。方法的基本组成部分包括：名称、参数、返回值和方法体。下面是它最基本的形式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ReturnType <span class="title">methodName</span><span class="params">(<span class="comment">/* Argument list*/</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">/* Method body*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>返回类型描述的是在调用方法之后从方法返回的值。<br>Java中的方法只能作为类的一部分来创建。方法只有通过对象才能被调用，且这个对象必须执行这个方法调用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">objectName.methodName(arg1, arg2, arg3);</span><br><span class="line"><span class="comment">// how to call method</span></span><br><span class="line"><span class="keyword">int</span> x = a.f();</span><br><span class="line"><span class="comment">// example for call method</span></span><br></pre></td></tr></table></figure></p>
+<p>以上返回类型必须和x的类型兼容。<br>这种调用方法的行为通常别称为<strong>发送消息给对象</strong>。消息是f(),对象是a。</p>
+<h3 id="2-5-1参数列表"><a href="#2-5-1参数列表" class="headerlink" title="2.5.1参数列表"></a>2.5.1参数列表</h3><p>方法的参数列表指定要传递给方法什么样的信息。这些信息都是对象形式。<br>假设某个方法接受String为其参数，下面是具体定义，它必须置于某个类的定义内才能被正确的编译。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">storage</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s.length()*<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过这个例子，还可以了解到<strong>return</strong>关键字的用法，它包括两方面：首先，它代表“已经做完，离开此方法”。其次，如果此方法产生了一个值，这个值要放在return语句后边。在这个例子中，返回值是通过计算s.length()*2这个表达式得到的。<br>如果不想返回任何值，可以使用void（空）。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">flag</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="keyword">true</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">naturalLogBase</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="number">2.718</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">nothing</span><span class="params">()</span></span>&#123; <span class="keyword">return</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">nothing2</span><span class="params">()</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若返回值是void，return关键字的作用只是用来退出方法。因此，没必要到方法结束时才离开，可以使任何地方。如果返回值不是void，那么需要返回一个正确类型的返回值。<br>到此为止，读者或许觉得：程序似乎只是依稀裂带有方法的对象组合，这些方法以其他对象为参数，并发送消息给其他对象。其实大体上就是这样。</p>
+<h2 id="2-6构建一个Java程序"><a href="#2-6构建一个Java程序" class="headerlink" title="2.6构建一个Java程序"></a>2.6构建一个Java程序</h2><p>在构建第一个Java程序之前，还必须了解其它一些问题。</p>
+<h3 id="2-6-1名字可见性"><a href="#2-6-1名字可见性" class="headerlink" title="2.6.1名字可见性"></a>2.6.1名字可见性</h3><p>名字管理对任何程序设计语言来说，都是一个重要的问题。如果某个程序的某个模块使用了一个名字，而其他人在这个程序的不同模块里也使用了相同的名字，那么怎样才能区分这两个名字并防止二者互相冲突呢？为了解决这个问题，C++通过几个关键字引入了<strong>命名空间</strong>的概念。<br>而Java采用了一种全新的方法来避免上述问题。为了给类库生成一个不会与其他名字混淆的名字，Java的设计者希望程序员反过来使用自己Internet域名，因为这样保证它们肯定是独一无二的。<br>例如：net.mindview.utility.foibles。反转域名后，句点就用来代表子目录的划分。<br>在Java 1.0和1.1中，扩展名com、edu、org、net等约定为大写形式。在Java 2开发到一半时，设计者发现这样会引起一些问题，因此，现在整个包名都是小写了。</p>
+<h3 id="2-6-2运用其他构件"><a href="#2-6-2运用其他构件" class="headerlink" title="2.6.2运用其他构件"></a>2.6.2运用其他构件</h3><p>如果想在自己的程序中使用预先定义好的类，那么编译器就必须知道怎么定位它们。<br>为了解决一系列的问题，可以使用关键字import来准确的告诉编译器你想要的是什么。import指示编译器导入一个包，也就是一个类库。<br>大多时候，我们使用预编译器附在一起的Java标准类库里边的构件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-6-3static关键字"><a href="#2-6-3static关键字" class="headerlink" title="2.6.3static关键字"></a>2.6.3static关键字</h3><p>通常来说，当创建类时，就是在描述那个类的对象的外观和行为。除非用new创建那个类的对象，否则，实际上并未获得任何对象。执行new来创建对象时，数据存储空间才被分配，其方法采供外界调用。<br>有两种情形上述方法是无法解决的。一种情形是，只想为某特定域分配单一存储空间，而不去考虑究竟要创建多少对象，甚至根本就不创建任何对象。另外一种情形是，希望某个方法不与包含它的类的任何对象关联在一起。也就是说，即使没有创建对象，也能够调用这个方法。<br>由static关键字定义的，即使从未创建某个类的任何对象，也可以调用其static方法或static域。<br>有些面向对象语言采用<strong>类数据</strong>和<strong>类方法</strong>两个术语，代表那些数据和方法只是作为整个类，而不是类的某个特定对象而存在的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticTest</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">47</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>即使你创建两个StaticTest的对象，StaticTest.i也只有一份存储空间，这两个对象共享同一个i。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StaticTest st1 = <span class="keyword">new</span> StaticTest();</span><br><span class="line">StaticTest st2 = <span class="keyword">new</span> StaticTest();</span><br></pre></td></tr></table></figure></p>
+<p>在这里st1.i和st2.i指向同一存储空间，因此它们的值相同，都是47。<br>引用static的变量有两种方法：st1.i或者StaticTest.i。<br>类似的逻辑也应用与静态方法。<br>可以使用<strong>ClassName.method()</strong>加以引用。<br>一个static字段对每个类来说都只有一份存储空间，而非static字段则是对每个对象有一个存储空间。static方法的一个重要用法就是在不创建任何对象的前提下就可以调用它。正如我们将会看到的那样，这一点对定义<strong>main()</strong>方法很重要，这个方法是运行一个应用的入口。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -274,342 +284,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/06/21/《Thinking-in-java》读书笔记-10/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/17/《Thinking-in-java》读书笔记-9/" class="archive-article-date">
-  	<time datetime="2017-06-17T02:56:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/06/22/《Thinking-in-java》读书笔记-11/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          《Thinking in java》读书笔记(11)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/17/《Thinking-in-java》读书笔记-9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《Thinking in java》读书笔记(9)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/17/《Thinking-in-java》读书笔记-9/">《Thinking in java》读书笔记(9)</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/15/《Thinking-in-java》读书笔记-8/" class="archive-article-date">
-  	<time datetime="2017-06-15T10:24:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/15/《Thinking-in-java》读书笔记-8/">《Thinking in java》读书笔记(8)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/14/《Thinking-in-java》读书笔记-7/" class="archive-article-date">
-  	<time datetime="2017-06-14T10:36:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/14/《Thinking-in-java》读书笔记-7/">《Thinking in java》读书笔记(7)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/14/一些想法/" class="archive-article-date">
-  	<time datetime="2017-06-14T09:28:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/14/一些想法/">一些想法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/12/《Thinking-in-java》读书笔记-6/" class="archive-article-date">
-  	<time datetime="2017-06-12T10:14:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/12/《Thinking-in-java》读书笔记-6/">《Thinking in java》读书笔记(6)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/10/《Thinking-in-java》读书笔记-5/" class="archive-article-date">
-  	<time datetime="2017-06-10T10:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/10/《Thinking-in-java》读书笔记-5/">《Thinking in java》读书笔记(5)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/《Thinking-in-java》读书笔记-4/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/《Thinking-in-java》读书笔记-4/">《Thinking in java》读书笔记(4)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/决定/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:26:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/决定/">决定</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/06/page/2/">2</a><a class="extend next" rel="next" href="/archives/2017/06/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -633,8 +415,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
