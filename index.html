@@ -197,6 +197,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JIRA修改license" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/11/JIRA修改license/">JIRA修改license</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/11/JIRA修改license/" class="archive-article-date">
+  	<time datetime="2018-01-11T05:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If for whatever reason the JIRA license key needs to be extracted from the database, it can be done with the following SQL:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> propertyvalue <span class="keyword">AS</span> license </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br><span class="line">``` </span><br><span class="line">(info) This is tested on PostgreSQL and may need modifying for other DBMS such as Oracle or SQL Server.</span><br><span class="line"></span><br><span class="line">For JIRA 7.0.5 and above:</span><br><span class="line">``` sql</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
+<p>Updating the License<br>The license can be updated as per Specifying your License Details. If this does not work, it is possible to do so with an update to the database however it is not recommended. This is because it can cause data integrity problems and may lead to data corruption. If you choose to do this please keep in mind we may be unable to provide support.</p>
+<p>Always back up your data before performing any modification to the database. If possible, try your modifications on a test server.</p>
+<p>Stop JIRA.<br>Execute the following to locate the ID to modify:</p>
+<p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pt.id </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br><span class="line">``` </span><br><span class="line">JIRA 7.0.4 and above</span><br><span class="line">``` sql</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
+<p>Update the license with the following:</p>
+<p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> propertytext <span class="keyword">SET</span> propertyvalue = <span class="string">'&lt;license_string&gt;'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span> = &lt;id_from_step_2&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>JIRA 7.0.4 and above<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> productlicense <span class="keyword">set</span> license =<span class="string">'&lt;license_string&gt;'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>= &lt;id_from_step_2&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>Start JIRA.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/11/JIRA修改license/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-rsync的使用与配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -891,88 +973,9 @@
 
 
   
-    <article id="post-感觉最近有点霉运" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/07/感觉最近有点霉运/">感觉最近有点霉运</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/07/感觉最近有点霉运/" class="archive-article-date">
-  	<time datetime="2017-08-07T09:40:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>感觉最近有点霉运啊……</p>
-</blockquote>
-<p>很难受啊，最近有点不顺，总是发生不该发生的事情，真的不知道怎么了，看来自己要多多注意了。<br>
-        
-          <a class="article-more-a" href="/2017/08/07/感觉最近有点霉运/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/07/感觉最近有点霉运/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1086,6 +1089,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
