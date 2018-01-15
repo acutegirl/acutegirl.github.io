@@ -16,7 +16,9 @@
 <meta property="og:site_name" content="并非菜鸟的博客">
 <meta property="og:description" content="LinuxMySQL的安装">
 <meta property="og:image" content="http://yoursite.com/img/linuxMySQL-1.png">
-<meta property="og:updated_time" content="2018-01-15T02:26:38.185Z">
+<meta property="og:image" content="http://yoursite.com/img/linuxMySQL-5.png">
+<meta property="og:image" content="http://yoursite.com/img/linuxMySQL-6.png">
+<meta property="og:updated_time" content="2018-01-15T05:00:48.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LinuxMySQL的安装">
 <meta name="twitter:description" content="LinuxMySQL的安装">
@@ -231,6 +233,20 @@
 <h2 id="二、如果安装了需删除已安装版本"><a href="#二、如果安装了需删除已安装版本" class="headerlink" title="二、如果安装了需删除已安装版本"></a>二、如果安装了需删除已安装版本</h2><p>删除命令：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps 包名</span><br><span class="line">( rpm -ev mysql-4.1.12-3.RHEL4.1 )</span><br></pre></td></tr></table></figure></p>
 <p>删除老版本mysql的开发头文件和库<br>命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -fr /usr/lib/mysql</span><br><span class="line">rm -fr /usr/include/mysql</span><br></pre></td></tr></table></figure></p>
 <p>注意：卸载后/var/lib/mysql中的数据及/etc/my.cnf不会删除，如果确定没用后就手工删除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -f /etc/my.cnf</span><br><span class="line">rm -fr /var/lib/mysql</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、安装mysql准备环境"><a href="#三、安装mysql准备环境" class="headerlink" title="三、安装mysql准备环境"></a>三、安装mysql准备环境</h2><p>我自mysql官网下载通用的Linux版本安装包<br>mysql-5.7.20-linux-glibc2.12-x86_64.tar.gz<br>将下载好的包放在 /usr/local 目录下，或者执行命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.20-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line">``` </span><br><span class="line">![mysql-2](/img/linuxMySQL-2.png)</span><br><span class="line"></span><br><span class="line">解压下载的文件</span><br></pre></td></tr></table></figure></p>
+<p>tar -zxvf mysql-5.7.20-linux-glibc2.12-x86_64.tar.gz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将解压之后的所有文件移动到/usr/local/mysql</span><br></pre></td></tr></table></figure></p>
+<p>mv ./mysql-5.7.20-linux-glibc2.12-x86_64/* ./mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为mysql创建系统用户(可选，新版本会自动创建相应用户)</span><br></pre></td></tr></table></figure></p>
+<p>groupadd mysql<br>useradd -r -g mysql mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//-r参数表示mysql用户是系统用户，不可用于登录系统</span><br><span class="line">并变更mysql安装目录的所属用户和用户组</span><br></pre></td></tr></table></figure></p>
+<p>chown -R mysql:mysql mysql<br>// -R 迭代处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![mysql-3](/img/linuxMySQL-3.png)</span><br><span class="line">四、 安装和初始化</span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">初始化数据库</span><br></pre></td></tr></table></figure></p>
+<p>./bin/mysqld –initialize –user=mysql –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data –lc_messages_dir=/usr/local/mysql/share –lc_messages=en_US<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">记录刚刚输出的密码：</span><br><span class="line">	jk9tEao&lt;94MC</span><br><span class="line">![mysql-4](/img/linuxMySQL-4.png)</span><br><span class="line"></span><br><span class="line">配置/etc/my.cnf </span><br><span class="line">	</span><br><span class="line">[my.cnf](http://us-forever.com/file/my.cnf)</span><br><span class="line"></span><br><span class="line">五、 启动登录和设置密码</span><br><span class="line">------</span><br><span class="line">切换到mysql安装目录的bin下启动</span><br></pre></td></tr></table></figure></p>
+<p>./mysqld_safe –user=mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">启动后可能无法使用当前窗口</span><br><span class="line"></span><br><span class="line">登录进去设置新的密码：</span><br></pre></td></tr></table></figure></p>
+<p>./mysql -u root -p<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` sql</span><br><span class="line">set password=password(&quot;root&quot;);</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/linuxMySQL-5.png" alt="mysql-5"></p>
+<p>六、 添加到服务</p>
+<p>切换到 support-files目录下，并执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp mysql.server /etc/init.d/mysql</span><br></pre></td></tr></table></figure></p>
+<p>然后停止当前进程，使用服务启动mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure></p>
+<p>并添加mysql环境变量<br>在 /etc/profile 的文件末尾追加：<br>    export PATH=$PATH:/usr/local/mysql/bin<br>保存后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>最后使用新密码登录到mysql<br><img src="/img/linuxMySQL-6.png" alt="mysql-6"></p>
 
       
 
@@ -498,11 +514,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
