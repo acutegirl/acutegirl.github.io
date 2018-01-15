@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/23/《Thinking-in-java》读书笔记-13/index.html">
 <meta property="og:site_name" content="并非菜鸟的博客">
 <meta property="og:description" content="《Thinking-in-java》读书笔记(13)">
-<meta property="og:updated_time" content="2018-01-11T02:06:36.503Z">
+<meta property="og:updated_time" content="2018-01-15T02:03:47.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Thinking-in-java》读书笔记(13)">
 <meta name="twitter:description" content="《Thinking-in-java》读书笔记(13)">
@@ -222,6 +222,7 @@
       
         <h1 id="第三章-操作符"><a href="#第三章-操作符" class="headerlink" title="第三章 操作符"></a>第三章 操作符</h1><p>在最底层，Java中的数据是通过使用操作符来操做的。<br>Java是建立在C++基础之上的，所哟C和C++程序员应该非常熟悉Java的大多数操作符。当然，Java也做了一些改进与简化。</p>
 <h2 id="3-1更简单的打印语句"><a href="#3-1更简单的打印语句" class="headerlink" title="3.1更简单的打印语句"></a>3.1更简单的打印语句</h2><p>前一章中，我们介绍了Java的打印句：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"Rather a lot of type"</span>);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>可以看到，这天语句设计很多类型，而且读起来也非常费劲。<br>在第六章中将介绍<strong>静态导入</strong>（static import）这个在Java SE5中新增加的概念。我自己创建了一个新的类，然后实现简单的打印语句。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> util;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUtil</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Object o)</span></span>&#123;</span><br><span class="line">		System.out.println(o.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>实现部分：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> util.MyUtil.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="comment">//: object/Documentation1.java</span></span><br><span class="line"><span class="comment">/** A class comment */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="comment">/** A filed comment */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> i;</span><br><span class="line">	<span class="comment">/** A method comment </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> args </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@author</span> songyx</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		print(<span class="keyword">new</span> Date());</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="comment">///:~</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="3-2使用Java操作符"><a href="#3-2使用Java操作符" class="headerlink" title="3.2使用Java操作符"></a>3.2使用Java操作符</h2><p>操作符接受一个或者多个参数，并生成一个新值。<br>操作符作用域操作数，生成一个新值。<br>几乎所有操作符都只能操作“基本类型”。例外的操作符是“=”、“==”和“！=”。除此之外，String类支持“+”和“+=”。</p>
@@ -503,11 +504,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">

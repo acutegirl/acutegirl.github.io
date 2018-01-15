@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/01/11/JIRA修改license/index.html">
 <meta property="og:site_name" content="并非菜鸟的博客">
 <meta property="og:description" content="JIRA修改license">
-<meta property="og:updated_time" content="2018-01-11T05:29:43.275Z">
+<meta property="og:updated_time" content="2018-01-15T02:03:07.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JIRA修改license">
 <meta name="twitter:description" content="JIRA修改license">
@@ -220,11 +220,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>If for whatever reason the JIRA license key needs to be extracted from the database, it can be done with the following SQL:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> propertyvalue <span class="keyword">AS</span> license </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br><span class="line">``` </span><br><span class="line">(info) This is tested on PostgreSQL and may need modifying for other DBMS such as Oracle or SQL Server.</span><br><span class="line"></span><br><span class="line">For JIRA 7.0.5 and above:</span><br><span class="line">``` sql</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
+        <p>If for whatever reason the JIRA license key needs to be extracted from the database, it can be done with the following SQL:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> propertyvalue <span class="keyword">AS</span> license </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>(info) This is tested on PostgreSQL and may need modifying for other DBMS such as Oracle or SQL Server.</p>
+<p>For JIRA 7.0.5 and above:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure>
 <p>Updating the License<br>The license can be updated as per Specifying your License Details. If this does not work, it is possible to do so with an update to the database however it is not recommended. This is because it can cause data integrity problems and may lead to data corruption. If you choose to do this please keep in mind we may be unable to provide support.</p>
 <p>Always back up your data before performing any modification to the database. If possible, try your modifications on a test server.</p>
 <p>Stop JIRA.<br>Execute the following to locate the ID to modify:</p>
-<p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pt.id </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br><span class="line">``` </span><br><span class="line">JIRA 7.0.4 and above</span><br><span class="line">``` sql</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
+<p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pt.id </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>JIRA 7.0.4 and above<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
 <p>Update the license with the following:</p>
 <p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> propertytext <span class="keyword">SET</span> propertyvalue = <span class="string">'&lt;license_string&gt;'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span> = &lt;id_from_step_2&gt;;</span><br></pre></td></tr></table></figure></p>
 <p>JIRA 7.0.4 and above<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> productlicense <span class="keyword">set</span> license =<span class="string">'&lt;license_string&gt;'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>= &lt;id_from_step_2&gt;;</span><br></pre></td></tr></table></figure></p>
@@ -342,6 +347,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/01/15/Bitbucket的安装/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Bitbucket的安装
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/09/rsync的使用与配置/" id="article-nav-older" class="article-nav-link-wrap">
@@ -492,11 +506,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">

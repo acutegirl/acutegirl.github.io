@@ -197,6 +197,172 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LinuxMySQL的安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/15/LinuxMySQL的安装/">LinuxMySQL的安装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/15/LinuxMySQL的安装/" class="archive-article-date">
+  	<time datetime="2018-01-15T02:20:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、查看是否安装了MySQL"><a href="#一、查看是否安装了MySQL" class="headerlink" title="一、查看是否安装了MySQL"></a>一、查看是否安装了MySQL</h2><p>使用命令：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep -i mysql</span><br></pre></td></tr></table></figure></p>
+<p>如果使用centos，可能会出现冲突，解决冲突需要卸载mariadb<br>首先查看是否安装了Mariadb<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa|grep mariadb</span><br></pre></td></tr></table></figure></p>
+<p>然后卸载<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e mariadb-libs-5.5.56-2.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+<p>强制卸载(可选):<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps mariadb-libs-5.5.56-2.el7.x86_64</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2018/01/15/LinuxMySQL的安装/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/15/LinuxMySQL的安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Bitbucket的安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/15/Bitbucket的安装/">Bitbucket的安装</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/15/Bitbucket的安装/" class="archive-article-date">
+  	<time datetime="2018-01-15T01:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h2><p>1、数据库:MySQL(这里使用的是MySQL)</p>
+<p>2、操作系统：Centos或者是RHEL</p>
+<p>3、网络环境：无法连接到公网</p>
+<p>4、准备文件：</p>
+<ul>
+<li>atlassian-jira-software-7.6.0-x64.bin</li>
+<li>mysql-connector-java-5.1.44-bin.jar</li>
+<li>nginx-1.12.2.tar.gz(反向代理)</li>
+<li>git</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/15/Bitbucket的安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JIRA修改license" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -217,16 +383,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>If for whatever reason the JIRA license key needs to be extracted from the database, it can be done with the following SQL:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> propertyvalue <span class="keyword">AS</span> license </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br><span class="line">``` </span><br><span class="line">(info) This is tested on PostgreSQL and may need modifying for other DBMS such as Oracle or SQL Server.</span><br><span class="line"></span><br><span class="line">For JIRA 7.0.5 and above:</span><br><span class="line">``` sql</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
-<p>Updating the License<br>The license can be updated as per Specifying your License Details. If this does not work, it is possible to do so with an update to the database however it is not recommended. This is because it can cause data integrity problems and may lead to data corruption. If you choose to do this please keep in mind we may be unable to provide support.</p>
-<p>Always back up your data before performing any modification to the database. If possible, try your modifications on a test server.</p>
-<p>Stop JIRA.<br>Execute the following to locate the ID to modify:</p>
-<p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pt.id </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br><span class="line">``` </span><br><span class="line">JIRA 7.0.4 and above</span><br><span class="line">``` sql</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> productlicense;</span><br></pre></td></tr></table></figure></p>
-<p>Update the license with the following:</p>
-<p>JIRA 7.0.4 and below<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> propertytext <span class="keyword">SET</span> propertyvalue = <span class="string">'&lt;license_string&gt;'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span> = &lt;id_from_step_2&gt;;</span><br></pre></td></tr></table></figure></p>
-<p>JIRA 7.0.4 and above<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> productlicense <span class="keyword">set</span> license =<span class="string">'&lt;license_string&gt;'</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>= &lt;id_from_step_2&gt;;</span><br></pre></td></tr></table></figure></p>
-<p>Start JIRA.</p>
-
+        <p>If for whatever reason the JIRA license key needs to be extracted from the database, it can be done with the following SQL:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> propertyvalue <span class="keyword">AS</span> license </span><br><span class="line"><span class="keyword">FROM</span>   propertytext pt </span><br><span class="line">       <span class="keyword">JOIN</span> propertyentry pe </span><br><span class="line">         <span class="keyword">ON</span> pt.id = pe.id </span><br><span class="line"><span class="keyword">WHERE</span>  property_key = <span class="string">'License20'</span>;</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2018/01/11/JIRA修改license/#more">more >></a>
+        
       
 
       
@@ -815,164 +975,6 @@
 
 
   
-    <article id="post-一个人的情人节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/一个人的情人节/">一个人的情人节</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/28/一个人的情人节/" class="archive-article-date">
-  	<time datetime="2017-08-28T09:42:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> <pre></pre></p>
-<hr>
-<p> \ \    / /    | |             | |  (<em>)            ( )         | |                / </em>|<br>  \ \  / /<strong> <em> | |  </em></strong>  <em> __  | |</em>  <em>  </em> <strong>    _</strong>|/ <strong>_    </strong>| |  <strong> <em>  </em>   <em>  | |</em>  _</strong>   <em> <strong>    </strong></em>   <em> <strong>    </strong></em>   <em> <strong>    </strong></em>  <em> <strong>  </strong></em>   <strong><em>   </em> </strong><br>   \ \/ // <em>` || | / </em> | ‘<em> \ | __|| || ‘</em> \  / <em> \ / __|  / </em><code>| / _</code> || | | | |  <em>|/ </em> \ | ‘<strong>|  / <em> \ | ‘</em> \  / <em> \ | ‘</em> \  / _ | ‘</strong>|/ <strong>| / <em> \ | ‘</em> \<br>    \  /| (_| || ||  </strong>/| | | || |<em> | || | | ||  <strong>/ \</strong> \ | (</em>| || (<em>| || |</em>| | | | | (<em>) || |    | (</em>) || | | ||  <strong>/ | |_) ||  </strong>/| |   _<em> | (</em>) || | | |<br>     \/  _<em>,</em>||<em>| __</em>||<em>| |</em>| _<em>||</em>||<em>| |</em>| _<strong>| |_</strong>/  _<em>,</em>| _<em>,</em>| _<em>, | |</em>|  _<strong>/ |<em>|     \</em></strong>/ |<em>| |</em>| _<strong>| | .</strong>/  _<strong>||<em>|   |</em></strong>/ _<strong>/ |<em>| |</em>| 
-                                                                           </strong>/ |                                        | |<br>                                                                          |<em>__/                                         |</em>|<br><br>
-        
-          <a class="article-more-a" href="/2017/08/28/一个人的情人节/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/一个人的情人节/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-没有什么事情是办不到的，只怕你没法战胜自己" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/">没有什么事情是办不到的，只怕你没法战胜自己</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/" class="archive-article-date">
-  	<time datetime="2017-08-23T09:41:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>没有什么是办不到的，就怕就走是自己退缩了。</p>
-</blockquote>
-<p>这几天自己做了很多东西，在业务上和企业开发上有了新的进展。第一次写开源的东西，查看文档，然后自己搞出来，虽然以前都弄过，不过这是第一次在很快的时间内搞出来。第一次和别人一起对接一个业务，分析相关问题可能出现的情况。最后完成任务。解决BUG。<br>
-        
-          <a class="article-more-a" href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1091,11 +1093,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">
