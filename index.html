@@ -197,6 +197,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-一、安装环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/15/一、安装环境/">一、安装环境</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/15/一、安装环境/" class="archive-article-date">
+  	<time datetime="2018-01-15T08:19:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/15/一、安装环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LinuxMySQL的安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -593,32 +666,38 @@
 
 
   
-    <article id="post-say-something-to-myself" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-jira安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/23/say-something-to-myself/">say something to myself</a>
+      <a class="article-title" href="/2017/12/15/jira安装/">jira安装</a>
     </h1>
   
 
         
-        <a href="/2017/11/23/say-something-to-myself/" class="archive-article-date">
-  	<time datetime="2017-11-23T09:54:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-23</time>
+        <a href="/2017/12/15/jira安装/" class="archive-article-date">
+  	<time datetime="2017-12-15T08:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>好久没有写博客了，大概是没有时间，大概是懒吧。<br>在自己看来，时间还是很多的，要看你去做什么事情。</p>
-<p>这段时间，自己经历了很多，出去玩了一趟，请了几天的假，然后换了一家公司，在上家公司辞职后，这家公司上班前，发生了很多有趣的事情。<br>
-        
-          <a class="article-more-a" href="/2017/11/23/say-something-to-myself/#more">more >></a>
-        
+        <h2 id="一、安装环境"><a href="#一、安装环境" class="headerlink" title="一、安装环境"></a>一、安装环境</h2><p>1、数据库:MySQL(这里使用的是MySQL)</p>
+<p>2、操作系统：Centos或者是RHEL</p>
+<p>3、网络环境：无法连接到公网</p>
+<p>4、准备文件：</p>
+<p>atlassian-jira-software-7.6.0-x64.bin<br>mysql-connector-java-5.1.44-bin.jar<br>nginx-1.12.2.tar.gz(反向代理)</p>
+<h2 id="二、准备环境"><a href="#二、准备环境" class="headerlink" title="二、准备环境"></a>二、准备环境</h2><p>1、分别在/opt/下创建好两个目录</p>
+<p>安装目录 mkdir -p /opt/atlassian/jira<br>home目录 mkdir -p /opt/atlassian/jira-home</p>
+<p>2、copy mysql-connector-java-5.1.44-bin.jar到安装目录/lib/下</p>
+<p>cp ./mysql-connector-java-5.1.44-bin.jar /opt/atlassian/jira/lib</p>
+<p>3、chmod a+x atlassian-jira-software-7.6.0-x64.bin</p>
+<p>4、切换到管理员用户<br>./atlassian-jira-software-7.6.0-x64.bin<br>5、安装步骤</p>
+
       
 
       
@@ -631,7 +710,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
         		</li>
       		
 		</ul>
@@ -641,7 +720,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/23/say-something-to-myself/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/15/jira安装/">展开全文 >></a>
         </p>
       
 
@@ -671,30 +750,27 @@
 
 
   
-    <article id="post-怀念那些我喜欢的经典" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Nginx代理Atlassian产品-2-Use-Domain-mydomain-com" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/怀念那些我喜欢的经典/">怀念那些我喜欢的经典</a>
+      <a class="article-title" href="/2017/12/13/Nginx代理Atlassian产品-2-Use-Domain-mydomain-com/">Nginx代理Atlassian产品(2):Use Domain:*.mydomain.com</a>
     </h1>
   
 
         
-        <a href="/2017/10/25/怀念那些我喜欢的经典/" class="archive-article-date">
-  	<time datetime="2017-10-25T09:53:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
+        <a href="/2017/12/13/Nginx代理Atlassian产品-2-Use-Domain-mydomain-com/" class="archive-article-date">
+  	<time datetime="2017-12-13T08:15:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>昨晚一时兴起，特别想看之前看过的一部电影，然后就下载了下来，当时已经是1点多了，然后还是禁不住看了起来，还是被故事中的人物和情节所感动。<br>希望自己也能够拥有那样的爱情吧。</p>
-</blockquote>
-
+        
       
 
       
@@ -707,7 +783,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
         		</li>
       		
 		</ul>
@@ -717,7 +793,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/25/怀念那些我喜欢的经典/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/13/Nginx代理Atlassian产品-2-Use-Domain-mydomain-com/">展开全文 >></a>
         </p>
       
 
@@ -747,29 +823,152 @@
 
 
   
-    <article id="post-国庆快乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Nginx代理Atlassian产品-1-Use-Domain-www-mydomain-com" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/01/国庆快乐/">国庆快乐</a>
+      <a class="article-title" href="/2017/12/13/Nginx代理Atlassian产品-1-Use-Domain-www-mydomain-com/">Nginx代理Atlassian产品(1):Use Domain:www.mydomain.com/*</a>
     </h1>
   
 
         
-        <a href="/2017/10/01/国庆快乐/" class="archive-article-date">
-  	<time datetime="2017-10-01T09:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-01</time>
+        <a href="/2017/12/13/Nginx代理Atlassian产品-1-Use-Domain-www-mydomain-com/" class="archive-article-date">
+  	<time datetime="2017-12-13T07:07:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>国庆快乐，马上就要回家的心情还是很激动的！</p>
-<p>当然也少不了中秋快乐。</p>
+        <h1 id="一、配置JIRA"><a href="#一、配置JIRA" class="headerlink" title="一、配置JIRA"></a>一、配置JIRA</h1><h3 id="1-配置-conf-server-xml"><a href="#1-配置-conf-server-xml" class="headerlink" title="1.配置/conf/server.xml"></a>1.配置/conf/server.xml</h3><p>修改前</p>
+<pre><code>&lt;Context docBase=&quot;${catalina.home}/atlassian-jira&quot; path=&quot;&quot; reloadable=&quot;false&quot; useHttpOnly=&quot;true&quot;&gt;
+</code></pre><p>修改后</p>
+<pre><code>&lt;Context docBase=&quot;${catalina.home}/atlassian-jira&quot; path=&quot;/jira&quot; reloadable=&quot;false&quot; useHttpOnly=&quot;true&quot;&gt;
+</code></pre><p>添加proxyName和proxyPort</p>
+<pre><code>&lt;!-- Nginx Proxy Connector --&gt;
+&lt;Connector port=&quot;8080&quot; maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot; maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;false&quot; redirectPort=&quot;8443&quot; acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot;
+proxyName=&quot;www.atlassian.com&quot; proxyPort=&quot;80&quot;/&gt; 
 
+&lt;!-- OPTIONAL,Nginx Proxy Connector with https --&gt;
+&lt;Connector port=&quot;8081&quot; maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot; maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;false&quot; redirectPort=&quot;8443&quot; acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot;
+proxyName=&quot;www.atlassian.com&quot; proxyPort=&quot;443&quot; scheme=&quot;https&quot; secure=&quot;true&quot;/&gt; 
+
+&lt;!-- Standard HTTP Connector --&gt;
+&lt;Connector port=&quot;8082&quot; maxThreads=&quot;150&quot; minSpareThreads=&quot;25&quot; connectionTimeout=&quot;20000&quot; enableLookups=&quot;false&quot; maxHttpHeaderSize=&quot;8192&quot; protocol=&quot;HTTP/1.1&quot; useBodyEncodingForURI=&quot;false&quot; redirectPort=&quot;8443&quot; acceptCount=&quot;100&quot; disableUploadTimeout=&quot;true&quot;/&gt;
+</code></pre><h3 id="2-配置-conf-nginx-conf"><a href="#2-配置-conf-nginx-conf" class="headerlink" title="2.配置/conf/nginx.conf"></a>2.配置/conf/nginx.conf</h3><pre><code>server {
+    listen 80;
+    server_name www.atlassian.com;
+    location /jira {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+        proxy_pass http://jira-hostname:8080/jira;
+        client_max_body_size 100M;
+    }
+}
+</code></pre><h1 id="二、配置bitbucket"><a href="#二、配置bitbucket" class="headerlink" title="二、配置bitbucket"></a>二、配置bitbucket</h1><h3 id="1-配置-shared-bitbucket-properties"><a href="#1-配置-shared-bitbucket-properties" class="headerlink" title="1.配置/shared/bitbucket.properties"></a>1.配置/shared/bitbucket.properties</h3><pre><code>server.port=7990
+server.secure=true
+server.scheme=http
+server.proxy-port=80
+server.proxy-name=mydomain.com
+server.context-path=/bitbucket
+</code></pre><h3 id="2-配置-conf-nginx-conf-1"><a href="#2-配置-conf-nginx-conf-1" class="headerlink" title="2.配置/conf/nginx.conf"></a>2.配置/conf/nginx.conf</h3><pre><code>server {
+    listen          80;
+    server_name     mydomain.com;
+
+    location /bitbucket {
+        proxy_pass             http://localhost:7990;
+        proxy_set_header     X-Forwarded-Host $host;
+        proxy_set_header     X-Forwarded-Server $host;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_redirect         off;
+    }
+}
+</code></pre><h1 id="三、配置confluence"><a href="#三、配置confluence" class="headerlink" title="三、配置confluence"></a>三、配置confluence</h1><h3 id="1-配置-conf-server-xml-1"><a href="#1-配置-conf-server-xml-1" class="headerlink" title="1.配置/conf/server.xml"></a>1.配置/conf/server.xml</h3><p>修改前</p>
+<pre><code>&lt;Context path=&quot;&quot; docBase=&quot;../confluence&quot; debug=&quot;0&quot; reloadable=&quot;false&quot;&gt;
+</code></pre><p>修改后</p>
+<pre><code>&lt;Context path=&quot;/confluence&quot; docBase=&quot;../confluence&quot; debug=&quot;0&quot; reloadable=&quot;false&quot;&gt;
+</code></pre><p>添加proxyName和proxyPort</p>
+<pre><code>&lt;Connector port=&quot;8090&quot; connectionTimeout=&quot;20000&quot; redirectPort=&quot;8443&quot;
+maxThreads=&quot;48&quot; minSpareThreads=&quot;10&quot;
+enableLookups=&quot;false&quot; acceptCount=&quot;10&quot; debug=&quot;0&quot; URIEncoding=&quot;UTF-8&quot;
+            protocol=&quot;org.apache.coyote.http11.Http11NioProtocol&quot; 
+proxyName=&quot;www.mydomain.com&quot; proxyPort=&quot;80&quot; scheme=&quot;http&quot;/&gt;
+</code></pre><h3 id="2-配置-conf-nginx-conf-2"><a href="#2-配置-conf-nginx-conf-2" class="headerlink" title="2.配置/conf/nginx.conf"></a>2.配置/conf/nginx.conf</h3><pre><code>server {
+    listen 80;
+    server_name www.mydomain.com;
+
+
+    location /confluence {
+        client_max_body_size 100m;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8090/confluence;
+    }
+    location /synchrony {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://localhost:8091/synchrony;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;Upgrade&quot;;
+    }
+}
+</code></pre><h1 id="四、配置bamboo"><a href="#四、配置bamboo" class="headerlink" title="四、配置bamboo"></a>四、配置bamboo</h1><h3 id="1-配置-conf-server-xml-2"><a href="#1-配置-conf-server-xml-2" class="headerlink" title="1.配置/conf/server.xml"></a>1.配置/conf/server.xml</h3><p>修改path</p>
+<pre><code>&lt;Context path=&quot;/bamboo&quot; docBase=&quot;${catalina.home}/atlassian-bamboo&quot; reloadable=&quot;false&quot; useHttpOnly=&quot;true&quot;&gt;
+....
+&lt;/Context&gt;
+</code></pre><p>添加scheme、proxyName和proxyPort</p>
+<pre><code>&lt;Connector port=&quot;8085&quot; 
+ protocol=&quot;HTTP/1.1&quot;
+ connectionTimeout=&quot;20000&quot;
+ useBodyEncodingForURI=&quot;false&quot;
+ ....
+ ....
+ scheme=&quot;http&quot;
+ proxyName=&quot;www.mydomain.com&quot; 
+ proxyPort=&quot;80&quot; /&gt;
+</code></pre><h3 id="2-配置-conf-nginx-conf-3"><a href="#2-配置-conf-nginx-conf-3" class="headerlink" title="2.配置/conf/nginx.conf"></a>2.配置/conf/nginx.conf</h3><pre><code>server {
+    listen          80;
+    server_name     www.mydomain.com;
+    location /bamboo {
+        proxy_pass             http://localhost:8085/bamboo;
+        proxy_set_header     X-Forwarded-Host $host;
+        proxy_set_header     X-Forwarded-Server $host;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_redirect         off;
+    }
+}
+</code></pre><h1 id="五、配置fisheye"><a href="#五、配置fisheye" class="headerlink" title="五、配置fisheye"></a>五、配置fisheye</h1><h3 id="1-配置-config-xml"><a href="#1-配置-config-xml" class="headerlink" title="1.配置/config.xml"></a>1.配置/config.xml</h3><p>修改前</p>
+<pre><code>&lt;web-server&gt;
+    &lt;http bind=&quot;:8060&quot;/&gt;
+&lt;/web-server&gt;
+</code></pre><p>修改后</p>
+<pre><code>&lt;web-server site-url=&quot;http://www.mydomain.com&quot; context=&quot;/fisheye&quot;&gt;
+     &lt;http bind=&quot;:8060&quot; proxy-host=&quot;www.mydomain.com&quot; proxy-port=&quot;80&quot; proxy-scheme=&quot;http&quot;/&gt;
+&lt;/web-server&gt;
+</code></pre><h3 id="2-配置-conf-nginx-conf-4"><a href="#2-配置-conf-nginx-conf-4" class="headerlink" title="2.配置/conf/nginx.conf"></a>2.配置/conf/nginx.conf</h3><pre><code>server {
+    listen 80;
+    server_name www.atlassian.com;
+
+    location /fisheye{
+        proxy_pass          http://localhost:8060/fisheye;
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+        proxy_set_header    X-Forwarded-for $remote_addr;
+        port_in_redirect off;
+        proxy_connect_timeout 300;
+    }
+}
+</code></pre><h1 id="六、配置jiraServiceDesk"><a href="#六、配置jiraServiceDesk" class="headerlink" title="六、配置jiraServiceDesk"></a>六、配置jiraServiceDesk</h1><pre><code>请参考 一、配置JIRA
+</code></pre>
       
 
       
@@ -782,7 +981,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
         		</li>
       		
 		</ul>
@@ -792,7 +991,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/01/国庆快乐/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/13/Nginx代理Atlassian产品-1-Use-Domain-www-mydomain-com/">展开全文 >></a>
         </p>
       
 
@@ -822,30 +1021,204 @@
 
 
   
-    <article id="post-回忆总是会使我泪流满面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Atlassian产品使用单点登陆-SSO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/05/回忆总是会使我泪流满面/">回忆总是会使我泪流满面</a>
+      <a class="article-title" href="/2017/12/13/Atlassian产品使用单点登陆-SSO/">Atlassian产品使用单点登陆-SSO</a>
     </h1>
   
 
         
-        <a href="/2017/09/05/回忆总是会使我泪流满面/" class="archive-article-date">
-  	<time datetime="2017-09-05T09:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
+        <a href="/2017/12/13/Atlassian产品使用单点登陆-SSO/" class="archive-article-date">
+  	<time datetime="2017-12-13T06:42:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>今天想起一些东西，让我很难受。</p>
-</blockquote>
+        <h1 id="一、配置JIRA"><a href="#一、配置JIRA" class="headerlink" title="一、配置JIRA"></a>一、配置JIRA</h1><h3 id="1-修改-atlassian-jira-WEB-INF-classes-seraph-config-xml"><a href="#1-修改-atlassian-jira-WEB-INF-classes-seraph-config-xml" class="headerlink" title="1.修改/atlassian-jira/WEB-INF/classes/seraph-config.xml"></a>1.修改/atlassian-jira/WEB-INF/classes/seraph-config.xml</h3><pre><code>&lt;!--注释以下节点--&gt;
+&lt;!--&lt;authenticator class=&quot;com.atlassian.jira.security.login.JiraSeraphAuthenticator&quot;/&gt;--&gt;
 
+&lt;!--取消注释以下节点--&gt;
+&lt;authenticator class=&quot;com.atlassian.jira.security.login.SSOSeraphAuthenticator&quot;/&gt;
+</code></pre><h3 id="2-复制-client-conf-crowd-properties到-lt-JIRA-INSTALLATION-atlassian-jira-WEB-INF-classes下"><a href="#2-复制-client-conf-crowd-properties到-lt-JIRA-INSTALLATION-atlassian-jira-WEB-INF-classes下" class="headerlink" title="2.复制/client/conf/crowd.properties到&lt;JIRA-INSTALLATION/atlassian-jira/WEB-INF/classes下."></a>2.复制/client/conf/crowd.properties到&lt;JIRA-INSTALLATION/atlassian-jira/WEB-INF/classes下.</h3><p>编辑/atlassian-jira/WEB-INF/classes/crowd.properties</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application.name</td>
+<td>jira The application name must match the name that you specified when you defined the application in Crowd (see Step 1 above).</td>
+</tr>
+<tr>
+<td>application.password</td>
+<td>The password must match the one that you specified when you defined the application in Crowd (see Step 1 above).</td>
+<td></td>
+</tr>
+<tr>
+<td>crowd.base.url</td>
+<td>eg. (<a href="http://localhost:8095/crowd/)If" target="_blank" rel="noopener">http://localhost:8095/crowd/)If</a> your Crowd server’s port is configured differently from the default (i.e. 8095), set it accordingly.crowd.base.url must be the same URL used to access Crowd in your Browser.</td>
+</tr>
+<tr>
+<td>session.validationinterval</td>
+<td>Set to 0, if you want authentication checks to occur on each request. Otherwise set to the number of minutes between request to validate if the user is logged in or out of the Crowd SSO server. Setting this value to 1 or higher will increase the performance of Crowd’s integration.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>以上信息几乎在文件里边都有，只需修改对应的取值即可</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="二、配置bitbucket"><a href="#二、配置bitbucket" class="headerlink" title="二、配置bitbucket"></a>二、配置bitbucket</h1><p>添加/shared/bitbucket.properties</p>
+<pre><code>plugin.auth-crowd.sso.enabled=true
+</code></pre><p>一些可选的参数：</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plugin.auth-crowd.sso.enabled</td>
+<td>false</td>
+<td>Whether SSO support should be enabled or not. Regardless of this setting SSO authentication will only be activated when the system is connected to a Crowd directory that is configured for SSO.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.config.ttl</td>
+<td>15</td>
+<td>The auth plugin caches the SSO configuration that is retrieved from the remote Crowd server. This setting controls the time to live of that cache.This value is in minutes.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.config.error.wait</td>
+<td>1</td>
+<td>If an error occurs while retrieving the SSO configuration from the remote Crowd server, the system will wait this long before retrying. The wait time between subsequent attempts is incremented exponentially (1s -&gt; 1.5s -&gt; 2.3s -&gt; 3.4s, etc). The wait time is capped at the configured TTL.This value is in seconds.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.http.max.connections</td>
+<td>20</td>
+<td>The maximum number of HTTP connections in the connection pool for communication with the Crowd server.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.http.proxy.host</td>
+<td></td>
+<td>The name of the proxy server used to transport SOAP traffic to the Crowd server.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.http.proxy.port</td>
+<td></td>
+<td>The connection port of the proxy server (must be specified if a proxy host is specified).</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.http.proxy.username</td>
+<td></td>
+<td>The username used to authenticate with the proxy server (if the proxy server requires authentication).</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.http.proxy.password</td>
+<td></td>
+<td>The password used to authenticate with the proxy server (if the proxy server requires authentication).</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.http.timeout</td>
+<td>5000</td>
+<td>The HTTP connection timeout used for communication with the Crowd server. A value of zero indicates that there is no connection timeout.This value is in milliseconds.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.socket.timeout</td>
+<td>20000</td>
+<td>The socket timeout. You may wish to override the default value if the latency to the Crowd server is high.This value is in milliseconds.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.session.validationinterval</td>
+<td>3</td>
+<td>The number of minutes to cache authentication validation in the session. If this value is set to 0, each HTTP request will be authenticated with the Crowd server.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.session.lastvalidation</td>
+<td>atl.crowd.sso.lastvalidation</td>
+<td>The session key to use when storing a Date value of the user’s last authentication.</td>
+</tr>
+<tr>
+<td>plugin.auth-crowd.sso.session.tokenkey</td>
+<td>atl.crowd.sso.tokenkey</td>
+<td>The session key to use when storing a String value of the user’s authentication token.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="三、配置confluence"><a href="#三、配置confluence" class="headerlink" title="三、配置confluence"></a>三、配置confluence</h1><h3 id="1-修改-confluence-WEB-INF-classes-seraph-config-xml"><a href="#1-修改-confluence-WEB-INF-classes-seraph-config-xml" class="headerlink" title="1.修改/confluence/WEB-INF/classes/seraph-config.xml"></a>1.修改/confluence/WEB-INF/classes/seraph-config.xml</h3><pre><code>&lt;!--注释以下节点--&gt;
+&lt;!-- &lt;authenticator class=&quot;com.atlassian.confluence.user.ConfluenceAuthenticator&quot;/&gt; --&gt;
+
+&lt;!--取消注释以下节点--&gt;
+&lt;authenticator class=&quot;com.atlassian.confluence.user.ConfluenceCrowdSSOAuthenticator&quot;/&gt;
+</code></pre><h3 id="2-复制-client-conf-crowd-properties到-lt-CONFLUENCE-INSTALLATION-confluence-WEB-INF-classes下"><a href="#2-复制-client-conf-crowd-properties到-lt-CONFLUENCE-INSTALLATION-confluence-WEB-INF-classes下" class="headerlink" title="2.复制/client/conf/crowd.properties到&lt;CONFLUENCE-INSTALLATION/confluence/WEB-INF/classes下."></a>2.复制/client/conf/crowd.properties到&lt;CONFLUENCE-INSTALLATION/confluence/WEB-INF/classes下.</h3><p>编辑/confluence/WEB-INF/classes/crowd.properties</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application.name</td>
+<td><strong>confluence</strong> The application name must match the name that you specified when you defined the application in Crowd (see Step 1 above).</td>
+</tr>
+<tr>
+<td>application.password</td>
+<td>The password must match the one that you specified when you defined the application in Crowd (see Step 1 above).</td>
+</tr>
+<tr>
+<td>crowd.base.url</td>
+<td>eg. (<a href="http://localhost:8095/crowd/)If" target="_blank" rel="noopener">http://localhost:8095/crowd/)If</a> your Crowd server’s port is configured differently from the default (i.e. 8095), set it accordingly.crowd.base.url must be the same URL used to access Crowd in your Browser.</td>
+</tr>
+<tr>
+<td>session.validationinterval</td>
+<td>Set to 0, if you want authentication checks to occur on each request. Otherwise set to the number of minutes between request to validate if the user is logged in or out of the Crowd SSO server. Setting this value to 1 or higher will increase the performance of Crowd’s integration.</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>以上信息几乎在文件里边都有，只需修改对应的取值即可</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="四、配置bamboo"><a href="#四、配置bamboo" class="headerlink" title="四、配置bamboo"></a>四、配置bamboo</h1><h3 id="1-编辑-webapp-WEB-INF-classes-seraph-config-xml"><a href="#1-编辑-webapp-WEB-INF-classes-seraph-config-xml" class="headerlink" title="1.编辑\webapp\WEB-INF\classes\seraph-config.xml"></a>1.编辑\webapp\WEB-INF\classes\seraph-config.xml</h3><pre><code>&lt;!--注释以下节点--&gt;
+&lt;!--&lt;authenticator class=&quot;com.atlassian.bamboo.user.authentication.BambooAuthenticator&quot;/&gt;--&gt;
+
+&lt;!--取消注释以下节点--&gt;
+&lt;authenticator class=&quot;com.atlassian.crowd.integration.seraph.v25.BambooAuthenticator&quot;/&gt;
+</code></pre><h1 id="五、配置fisheye"><a href="#五、配置fisheye" class="headerlink" title="五、配置fisheye"></a>五、配置fisheye</h1><p>修改FISHEYE_INST/config.xml</p>
+<pre><code>&lt;config&gt;
+...
+    &lt;security allow-anon=&quot;false&quot; allow-cru-anon=&quot;false&quot;&gt;
+        &lt;built-in&gt;
+                &lt;signup enabled=&quot;true&quot;/&gt;
+        &lt;/built-in&gt;
+        &lt;crowd sso-enabled=&quot;true&quot;/&gt;
+        &lt;admins&gt;
+                &lt;system-admins&gt;
+                        &lt;group&gt;confluence-users&lt;/group&gt;
+                &lt;/system-admins&gt;
+        &lt;/admins&gt;
+        &lt;avatar&gt;&lt;disabled/&gt;&lt;/avatar&gt;
+        &lt;emailVisibility/&gt;
+    &lt;/security&gt;
+...
+&lt;/config&gt;
+//以上内容只需添加&lt;crowd sso-enabled=&quot;true&quot;/&gt;
+</code></pre><h1 id="六、配置jiraServiceDesk"><a href="#六、配置jiraServiceDesk" class="headerlink" title="六、配置jiraServiceDesk"></a>六、配置jiraServiceDesk</h1><pre><code>请参考 一、配置JIRA
+</code></pre>
       
 
       
@@ -858,7 +1231,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
         		</li>
       		
 		</ul>
@@ -868,84 +1241,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/05/回忆总是会使我泪流满面/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-迷茫" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/01/迷茫/">迷茫</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/01/迷茫/" class="archive-article-date">
-  	<time datetime="2017-09-01T09:45:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>刚刚加入了新的部门，对自己的前途有点堪忧。有点迷茫。</p>
-</blockquote>
-<p>不过我相信自己,所有的还是要靠自己。所以不管怎样都要加油！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/01/迷茫/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/13/Atlassian产品使用单点登陆-SSO/">展开全文 >></a>
         </p>
       
 
@@ -977,7 +1273,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1093,11 +1389,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1110,6 +1406,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-Java</a>
               </li>
             
             <div class="clearfix"></div>

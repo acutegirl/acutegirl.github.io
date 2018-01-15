@@ -197,33 +197,48 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-一个人的情人节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Atlassian产品安装环境准备-数据库-1-MySQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/一个人的情人节/">一个人的情人节</a>
+      <a class="article-title" href="/2017/12/11/Atlassian产品安装环境准备-数据库-1-MySQL/">Atlassian产品安装环境准备-数据库(1):MySQL</a>
     </h1>
   
 
         
-        <a href="/2017/08/28/一个人的情人节/" class="archive-article-date">
-  	<time datetime="2017-08-28T09:42:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
+        <a href="/2017/12/11/Atlassian产品安装环境准备-数据库-1-MySQL/" class="archive-article-date">
+  	<time datetime="2017-12-11T07:40:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> <pre></pre></p>
-<hr>
-<p> \ \    / /    | |             | |  (<em>)            ( )         | |                / </em>|<br>  \ \  / /<strong> <em> | |  </em></strong>  <em> __  | |</em>  <em>  </em> <strong>    _</strong>|/ <strong>_    </strong>| |  <strong> <em>  </em>   <em>  | |</em>  _</strong>   <em> <strong>    </strong></em>   <em> <strong>    </strong></em>   <em> <strong>    </strong></em>  <em> <strong>  </strong></em>   <strong><em>   </em> </strong><br>   \ \/ // <em>` || | / </em> | ‘<em> \ | __|| || ‘</em> \  / <em> \ / __|  / </em><code>| / _</code> || | | | |  <em>|/ </em> \ | ‘<strong>|  / <em> \ | ‘</em> \  / <em> \ | ‘</em> \  / _ | ‘</strong>|/ <strong>| / <em> \ | ‘</em> \<br>    \  /| (_| || ||  </strong>/| | | || |<em> | || | | ||  <strong>/ \</strong> \ | (</em>| || (<em>| || |</em>| | | | | (<em>) || |    | (</em>) || | | ||  <strong>/ | |_) ||  </strong>/| |   _<em> | (</em>) || | | |<br>     \/  _<em>,</em>||<em>| __</em>||<em>| |</em>| _<em>||</em>||<em>| |</em>| _<strong>| |_</strong>/  _<em>,</em>| _<em>,</em>| _<em>, | |</em>|  _<strong>/ |<em>|     \</em></strong>/ |<em>| |</em>| _<strong>| | .</strong>/  _<strong>||<em>|   |</em></strong>/ _<strong>/ |<em>| |</em>| 
-                                                                           </strong>/ |                                        | |<br>                                                                          |<em>__/                                         |</em>|<br><br>
-        
-          <a class="article-more-a" href="/2017/08/28/一个人的情人节/#more">more >></a>
-        
+        <h1 id="一、JIRA使用MySQL数据库"><a href="#一、JIRA使用MySQL数据库" class="headerlink" title="一、JIRA使用MySQL数据库"></a>一、JIRA使用MySQL数据库</h1><h3 id="1、-编辑my-cnf"><a href="#1、-编辑my-cnf" class="headerlink" title="1、 编辑my.cnf"></a>1、 编辑my.cnf</h3><ul>
+<li>设置default storage engine为InnoDB:<br>[mysqld]<br>…<br>default-storage-engine=INNODB<br>…</li>
+<li>确认max_allowed_packet最少为256M:<br>[mysqld]<br>…<br>max_allowed_packet=256M<br>…</li>
+<li>确认innodb_log_file_size至少为256M当MySQL的版本是5.5或5.5以下时:<br>[mysqld]<br>…<br>innodb_log_file_size=256M<br>…</li>
+<li><p>确保sql_mode的值不是NO_AUTO_VALUE_ON_ZERO<br>// remove this if it exists<br>sql_mode = NO_AUTO_VALUE_ON_ZERO</p>
+<h3 id="2、-创建数据库"><a href="#2、-创建数据库" class="headerlink" title="2、 创建数据库"></a>2、 创建数据库</h3><p>  CREATE DATABASE jiradb CHARACTER SET utf8 COLLATE utf8_bin;</p>
+</li>
+</ul>
+<h3 id="3、-为数据库创建相应的用户"><a href="#3、-为数据库创建相应的用户" class="headerlink" title="3、 为数据库创建相应的用户"></a>3、 为数据库创建相应的用户</h3><p>MySQL5.5,MySQL 5.6和MySQL 5.7.0到MySQL 5.7.5的语法:</p>
+<pre><code>GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,INDEX on &lt;JIRADB&gt;.* TO &apos;&lt;USERNAME&gt;&apos;@&apos;&lt;JIRA_SERVER_HOSTNAME&gt;&apos; IDENTIFIED BY &apos;&lt;PASSWORD&gt;&apos;;
+flush privileges;
+</code></pre><p>MySQL5.7.6及以上必须包括REFERENCES的权限:</p>
+<pre><code>GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,REFERENCES,ALTER,INDEX on &lt;JIRADB&gt;.* TO &apos;&lt;USERNAME&gt;&apos;@&apos;&lt;JIRA_SERVER_HOSTNAME&gt;&apos; IDENTIFIED BY &apos;&lt;PASSWORD&gt;&apos;;
+flush privileges;
+
+//确认数据库用户权限
+SHOW GRANTS FOR &lt;USERNAME&gt;@&lt;JIRA_SERVER_HOSTNAME&gt;;
+</code></pre><h3 id="4、-重启数据库"><a href="#4、-重启数据库" class="headerlink" title="4、 重启数据库"></a>4、 重启数据库</h3><ul>
+<li>Windows:使用系统服务管理器重启。</li>
+<li>Linux: /etc/init.d/mysqld stop’ 或者 ‘/etc/init.d/mysql stop’ 或者 ‘service mysqld stop’.<br>-启动时将stop换成start.</li>
+</ul>
+
       
 
       
@@ -236,7 +251,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ATLASSIAN产品安装</a>
         		</li>
       		
 		</ul>
@@ -246,7 +261,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/一个人的情人节/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/11/Atlassian产品安装环境准备-数据库-1-MySQL/">展开全文 >></a>
         </p>
       
 
@@ -276,20 +291,279 @@
 
 
   
-    <article id="post-没有什么事情是办不到的，只怕你没法战胜自己" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《Thinking-in-java》读书笔记-23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/">没有什么事情是办不到的，只怕你没法战胜自己</a>
+      <a class="article-title" href="/2017/11/24/《Thinking-in-java》读书笔记-23/">《Thinking in java》读书笔记(23)</a>
     </h1>
   
 
         
-        <a href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/" class="archive-article-date">
-  	<time datetime="2017-08-23T09:41:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
+        <a href="/2017/11/24/《Thinking-in-java》读书笔记-23/" class="archive-article-date">
+  	<time datetime="2017-11-24T05:58:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-8-switch"><a href="#4-8-switch" class="headerlink" title="4.8 switch"></a>4.8 switch</h2><p><strong>switch</strong>有时也被划归为一种选择语句。根据证书表达式的值，switch语句可以从一系列代码中选出一段去执行。它的格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(integer-selector)&#123;</span><br><span class="line">	<span class="keyword">case</span> integral-value1: statement ;<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> integral-value2: statement ;<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> integral-value3: statement ;<span class="keyword">break</span>;</span><br><span class="line"> 	<span class="keyword">case</span> integral-value4: statement ;<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> integral-value5: statement ;<span class="keyword">break</span>;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">	<span class="keyword">default</span>:statement;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2017/11/24/《Thinking-in-java》读书笔记-23/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/24/《Thinking-in-java》读书笔记-23/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《Thinking-in-java》读书笔记-22" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/24/《Thinking-in-java》读书笔记-22/">《Thinking in java》读书笔记(22)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/24/《Thinking-in-java》读书笔记-22/" class="archive-article-date">
+  	<time datetime="2017-11-24T05:58:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4-4-Foreach语法"><a href="#4-4-Foreach语法" class="headerlink" title="4.4 Foreach语法"></a>4.4 Foreach语法</h2><p>Java SE5引入了一种新的更加简洁的for语法用于数组和容器，也就是foreach语法，表示不必创建int变量去对由访问项构成的序列进行计数，foreach将自动产生每一项。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> testForeach</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yaxuSong</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年11月24日 下午3:01:31 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">testForeach</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">char</span> c : <span class="string">"Hello Java!"</span>.toCharArray())</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(c);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2017/11/24/《Thinking-in-java》读书笔记-22/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/24/《Thinking-in-java》读书笔记-22/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java工程师成神之路" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/24/Java工程师成神之路/">Java工程师成神之路</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/24/Java工程师成神之路/" class="archive-article-date">
+  	<time datetime="2017-11-24T03:58:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我在微信公众号上看到的一篇文章，关于Java学习的一个文章，我觉得写的特别好，所以留下来，作为自己学习的指导.</p>
+<p>一、基础篇</p>
+<p>1.1 JVM</p>
+<p>1.1.1. Java内存模型，Java内存管理，Java堆和栈，垃圾回收<br><a href="http://www.jcp.org/en/jsr/detail?id=133" target="_blank" rel="noopener">http://www.jcp.org/en/jsr/detail?id=133</a><br><a href="http://ifeve.com/jmm-faq/" target="_blank" rel="noopener">http://ifeve.com/jmm-faq/</a><br>1.1.2. 了解JVM各种参数及调优</p>
+<p>1.1.3. 学习使用Java工具<br>jps, jstack, jmap, jconsole, jinfo, jhat, javap, …<br><a href="http://kenai.com/projects/btrace" target="_blank" rel="noopener">http://kenai.com/projects/btrace</a><br><a href="http://www.crashub.org/" target="_blank" rel="noopener">http://www.crashub.org/</a><br><a href="https://github.com/taobao/TProfiler" target="_blank" rel="noopener">https://github.com/taobao/TProfiler</a><br><a href="https://github.com/CSUG/HouseMD" target="_blank" rel="noopener">https://github.com/CSUG/HouseMD</a><br><a href="http://wiki.cyclopsgroup.org/jmxterm" target="_blank" rel="noopener">http://wiki.cyclopsgroup.org/jmxterm</a><br><a href="https://github.com/jlusdy/TBJMap" target="_blank" rel="noopener">https://github.com/jlusdy/TBJMap</a><br>1.1.4. 学习Java诊断工具<br><a href="http://www.eclipse.org/mat/" target="_blank" rel="noopener">http://www.eclipse.org/mat/</a><br><a href="http://visualvm.java.net/oqlhelp.html" target="_blank" rel="noopener">http://visualvm.java.net/oqlhelp.html</a><br>1.1.5. 自己编写各种outofmemory，stackoverflow程序<br>HeapOutOfMemory<br>Young OutOfMemory<br>MethodArea OutOfMemory<br>ConstantPool OutOfMemory<br>DirectMemory OutOfMemory<br>Stack OutOfMemory<br>Stack OverFlow<br>1.1.6. 使用工具尝试解决以下问题，并写下总结<br>当一个Java程序响应很慢时如何查找问题<br>当一个Java程序频繁FullGC时如何解决问题，如何查看垃圾回收日志<br>当一个Java应用发生OutOfMemory时该如何解决，年轻代、年老代、永久代解决办法不同，导致原因也不同<br>1.1.7. 参考资料<br><a href="http://docs.oracle.com/javase/specs/jvms/se7/html/" target="_blank" rel="noopener">http://docs.oracle.com/javase/specs/jvms/se7/html/</a><br><a href="http://www.cs.umd.edu/~pugh/java/memoryModel/" target="_blank" rel="noopener">http://www.cs.umd.edu/~pugh/java/memoryModel/</a><br><a href="http://gee.cs.oswego.edu/dl/jmm/cookbook.html" target="_blank" rel="noopener">http://gee.cs.oswego.edu/dl/jmm/cookbook.html</a><br>1.2. Java基础知识</p>
+<p>1.2.1. 阅读源代码<br>java.lang.String<br>java.lang.Integer<br>java.lang.Long<br>java.lang.Enum<br>java.math.BigDecimal<br>java.lang.ThreadLocal<br>java.lang.ClassLoader &amp; java.net.URLClassLoader<br>java.util.ArrayList &amp; java.util.LinkedList<br>java.util.HashMap &amp; java.util.LinkedHashMap &amp; java.util.TreeMap<br>java.util.HashSet &amp; java.util.LinkedHashSet &amp; java.util.TreeSet<br>1.2.2. 熟悉Java中各种变量类型<br>1.2.3. 熟悉Java String的使用，熟悉String的各种函数<br>1.2.4. 熟悉Java中各种关键字<br>1.2.5. 学会使用List，Map，Stack，Queue，Set<br>上述数据结构的遍历<br>上述数据结构的使用场景<br>Java实现对Array/List排序<br>java.uti.Arrays.sort()<br>java.util.Collections.sort()<br>Java实现对List去重<br>Java实现对List去重，并且需要保留数据原始的出现顺序<br>Java实现最近最少使用cache，用LinkedHashMap<br>1.2.6. Java IO&amp;Java NIO，并学会使用<br>java.io.<br>java.nio.<br>nio和reactor设计模式<br>文件编码，字符集<br>1.2.7. Java反射与javassist<br>反射与工厂模式<br>java.lang.reflect.<br>1.2.8. Java序列化<br>java.io. Serializable<br>什么是序列化，为什么序列化<br>序列化与单例模式<br>google序列化protobuf<br>1.2.9. 虚引用，弱引用，软引用<br>java.lang.ref.<br>实验这些引用的回收<br>1.2.10. 熟悉Java系统属性<br>java.util.Properties<br>1.2.11. 熟悉Annotation用法<br>java.lang.annotation.<br>1.2.12. JMS<br>javax.jms.<br>1.2.13. JMX<br>java.lang.management.<br>javax.management.<br>1.2.14. 泛型和继承，泛型和擦除<br>1.2.15. 自动拆箱装箱与字节码<br>1.2.16. 实现Callback<br>1.2.17. java.lang.Void类使用<br>1.2.18. Java Agent，premain函数<br>java.lang.instrument<br>1.2.19. 单元测试<br>Junit，<a href="http://junit.org/" target="_blank" rel="noopener">http://junit.org/</a><br>Jmockit，<a href="https://code.google.com/p/jmockit/" target="_blank" rel="noopener">https://code.google.com/p/jmockit/</a><br>djUnit，<a href="http://works.dgic.co.jp/djunit/" target="_blank" rel="noopener">http://works.dgic.co.jp/djunit/</a><br>1.2.20. Java实现通过正则表达式提取一段文本中的电子邮件，并将@替换为#输出<br>java.lang.util.regex.<br>1.2.21. 学习使用常用的Java工具库<br>commons.lang, commons.…<br>guava-libraries<br>netty<br>1.2.22. 什么是API&amp;SPI<br><a href="http://en.wikipedia.org/wiki/Application_programming_interface" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Application_programming_interface</a><br><a href="http://en.wikipedia.org/wiki/Service_provider_interface" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Service_provider_interface</a><br>1.2.23. 参考资料<br>JDK src.zip 源代码<br><a href="http://openjdk.java.net/" target="_blank" rel="noopener">http://openjdk.java.net/</a><br><a href="http://commons.apache.org/" target="_blank" rel="noopener">http://commons.apache.org/</a><br><a href="https://code.google.com/p/guava-libraries/" target="_blank" rel="noopener">https://code.google.com/p/guava-libraries/</a><br><a href="http://netty.io/" target="_blank" rel="noopener">http://netty.io/</a><br><a href="http://stackoverflow.com/questions/2954372/difference-between-spi-and-api" target="_blank" rel="noopener">http://stackoverflow.com/questions/2954372/difference-between-spi-and-api</a><br><a href="http://stackoverflow.com/questions/11404230/how-to-implement-the-api-spi-pattern-in-java" target="_blank" rel="noopener">http://stackoverflow.com/questions/11404230/how-to-implement-the-api-spi-pattern-in-java</a><br>1.3. Java并发编程</p>
+<p>1.3.1. 阅读源代码，并学会使用</p>
+<p>java.lang.Thread<br>java.lang.Runnable<br>java.util.concurrent.Callable<br>java.util.concurrent.locks.ReentrantLock<br>java.util.concurrent.locks.ReentrantReadWriteLock<br>java.util.concurrent.atomic.Atomic*<br>java.util.concurrent.Semaphore<br>java.util.concurrent.CountDownLatch<br>java.util.concurrent.CyclicBarrier<br>java.util.concurrent.ConcurrentHashMap<br>java.util.concurrent.Executors<br>1.3.2. 学习使用线程池，自己设计线程池需要注意什么<br>1.3.3. 锁<br>什么是锁，锁的种类有哪些，每种锁有什么特点，适用场景是什么<br>在并发编程中锁的意义是什么<br>1.3.4. synchronized的作用是什么，synchronized和lock<br>1.3.5. sleep和wait<br>1.3.6. wait和notify<br>1.3.7. 写一个死锁的程序<br>1.3.8. 什么是守护线程，守护线程和非守护线程的区别以及用法<br>1.3.9. volatile关键字的理解<br>C++ volatile关键字和Java volatile关键字<br>happens-before语义<br>编译器指令重排和CPU指令重排<br><a href="http://en.wikipedia.org/wiki/Memory_ordering" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Memory_ordering</a><br><a href="http://en.wikipedia.org/wiki/Volatile_variable" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Volatile_variable</a><br><a href="http://preshing.com/20130702/the-happens-before-relation/" target="_blank" rel="noopener">http://preshing.com/20130702/the-happens-before-relation/</a><br>1.3.10. 以下代码是不是线程安全？为什么？如果为count加上volatile修饰是否能够做到线程安全？你觉得该怎么做是线程安全的？<br>public class Sample {<br>private static int count = 0;<br>public static void increment() {<br>count++;<br>}<br>}<br>1.3.11. 解释一下下面两段代码的差别<br>// 代码1<br>public class Sample {<br>private static int count = 0;<br>synchronized public static void increment() {<br>count++;<br>}<br>}</p>
+<p>// 代码2<br>public class Sample {<br>private static AtomicInteger count = new AtomicInteger(0);<br>public static void increment() {<br>count.getAndIncrement();<br>}<br>}<br>1.3.12. 参考资料<br><a href="http://book.douban.com/subject/10484692/" target="_blank" rel="noopener">http://book.douban.com/subject/10484692/</a><br><a href="http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html" target="_blank" rel="noopener">http://www.intel.com/content/www/us/en/processors/architectures-software-developer-manuals.html</a><br>二、 进阶篇</p>
+<p>2.1. Java底层知识</p>
+<p>2.1.1. 学习了解字节码、class文件格式<br><a href="http://en.wikipedia.org/wiki/Java_class_file" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Java_class_file</a><br><a href="http://en.wikipedia.org/wiki/Java_bytecode" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Java_bytecode</a><br><a href="http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings</a><br><a href="http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/" target="_blank" rel="noopener">http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/</a><br><a href="http://asm.ow2.org/" target="_blank" rel="noopener">http://asm.ow2.org/</a><br>2.1.2. 写一个程序要求实现javap的功能（手工完成，不借助ASM等工具）<br>如Java源代码：<br>public static void main(String[] args) {<br>int i = 0;<br>i += 1;<br>i *= 1;<br>System.out.println(i);<br>}<br>编译后读取class文件输出以下代码：<br>public static void main(java.lang.String[]);<br>Code:<br>Stack=2, Locals=2, Args_size=1<br>0: iconst_0<br>1: istore_1<br>2: iinc 1, 1<br>5: iload_1<br>6: iconst_1<br>7: imul<br>8: istore_1<br>9: getstatic #2; //Field java/lang/System.out:Ljava/io/PrintStream;<br>12: iload_1<br>13: invokevirtual #3; //Method java/io/PrintStream.println:(I)V<br>16: return<br>LineNumberTable:<br>line 4: 0<br>line 5: 2<br>line 6: 5<br>line 7: 9<br>line 8: 16<br>2.1.3. CPU缓存，L1，L2，L3和伪共享<br><a href="http://duartes.org/gustavo/blog/post/intel-cpu-caches/" target="_blank" rel="noopener">http://duartes.org/gustavo/blog/post/intel-cpu-caches/</a><br><a href="http://mechanical-sympathy.blogspot.com/2011/07/false-sharing.html" target="_blank" rel="noopener">http://mechanical-sympathy.blogspot.com/2011/07/false-sharing.html</a><br>2.1.4. 什么是尾递归<br>2.1.5. 熟悉位运算<br>用位运算实现加、减、乘、除、取余<br>2.1.6. 参考资料<br><a href="http://book.douban.com/subject/1138768/" target="_blank" rel="noopener">http://book.douban.com/subject/1138768/</a><br><a href="http://book.douban.com/subject/6522893/" target="_blank" rel="noopener">http://book.douban.com/subject/6522893/</a><br><a href="http://en.wikipedia.org/wiki/Java_class_file" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Java_class_file</a><br><a href="http://en.wikipedia.org/wiki/Java_bytecode" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Java_bytecode</a><br><a href="http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Java_bytecode_instruction_listings</a><br>2.2. 设计模式</p>
+<p>2.2.1. 实现AOP<br>CGLIB和InvocationHandler的区别<br><a href="http://cglib.sourceforge.net/" target="_blank" rel="noopener">http://cglib.sourceforge.net/</a><br>动态代理模式<br>Javassist实现AOP<br><a href="http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/" target="_blank" rel="noopener">http://www.csg.ci.i.u-tokyo.ac.jp/~chiba/javassist/</a><br>ASM实现AOP<br><a href="http://asm.ow2.org/" target="_blank" rel="noopener">http://asm.ow2.org/</a><br>2.2.2. 使用模板方法设计模式和策略设计模式实现IOC<br>2.2.3. 不用synchronized和lock，实现线程安全的单例模式<br>2.2.4. nio和reactor设计模式<br>2.2.5. 参考资料<br><a href="http://asm.ow2.org/" target="_blank" rel="noopener">http://asm.ow2.org/</a><br><a href="http://cglib.sourceforge.net/" target="_blank" rel="noopener">http://cglib.sourceforge.net/</a><br><a href="http://www.javassist.org/" target="_blank" rel="noopener">http://www.javassist.org/</a><br>2.3. 网络编程知识<br>2.3.1. Java RMI，Socket，HttpClient<br>2.3.2. 用Java写一个简单的静态文件的HTTP服务器<br>实现客户端缓存功能，支持返回304<br>实现可并发下载一个文件<br>使用线程池处理客户端请求<br>使用nio处理客户端请求<br>支持简单的rewrite规则<br>上述功能在实现的时候需要满足“开闭原则”<br>2.3.3. 了解nginx和apache服务器的特性并搭建一个对应的服务器<br><a href="http://nginx.org/" target="_blank" rel="noopener">http://nginx.org/</a><br><a href="http://httpd.apache.org/" target="_blank" rel="noopener">http://httpd.apache.org/</a><br>2.3.4. 用Java实现FTP、SMTP协议<br>2.3.5. 什么是CDN？如果实现？DNS起到什么作用？<br>搭建一个DNS服务器<br>搭建一个 Squid 或 Apache Traffic Server 服务器<br><a href="http://www.squid-cache.org/" target="_blank" rel="noopener">http://www.squid-cache.org/</a><br><a href="http://trafficserver.apache.org/" target="_blank" rel="noopener">http://trafficserver.apache.org/</a><br><a href="http://en.wikipedia.org/wiki/Domain_Name_System" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Domain_Name_System</a><br>2.3.6. 参考资料<br><a href="http://www.ietf.org/rfc/rfc2616.txt" target="_blank" rel="noopener">http://www.ietf.org/rfc/rfc2616.txt</a><br><a href="http://tools.ietf.org/rfc/rfc5321.txt" target="_blank" rel="noopener">http://tools.ietf.org/rfc/rfc5321.txt</a><br><a href="http://en.wikipedia.org/wiki/Open/closed_principle" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Open/closed_principle</a><br>2.4. 框架知识<br>spring，spring mvc，阅读主要源码<br>ibatis，阅读主要源码<br>用spring和ibatis搭建java server<br>2.5. 应用服务器知识<br>熟悉使用jboss，<a href="https://www.jboss.org/overview/" target="_blank" rel="noopener">https://www.jboss.org/overview/</a><br>熟悉使用tomcat，<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a><br>熟悉使用jetty，<a href="http://www.eclipse.org/jetty/" target="_blank" rel="noopener">http://www.eclipse.org/jetty/</a><br>三、 高级篇</p>
+<p>3.1. 编译原理知识</p>
+<p>3.1.1. 用Java实现以下表达式解析并返回结果（语法和Oracle中的select sysdate-1 from dual类似）<br>sysdate<br>sysdate - 1<br>sysdate - 1/24<br>sysdate - 1/(12*2)<br>3.1.2. 实现对一个List通过DSL筛选<br>QList&gt; mapList = new QList&gt;;<br>mapList.add({“name”: “hatter test”});<br>mapList.add({“id”: -1,”name”: “hatter test”});<br>mapList.add({“id”: 0, “name”: “hatter test”});<br>mapList.add({“id”: 1, “name”: “test test”});<br>mapList.add({“id”: 2, “name”: “hatter test”});<br>mapList.add({“id”: 3, “name”: “test hatter”});<br>mapList.query(“id is not null and id &gt; 0 and name like ‘%hatter%’”);<br>要求返回列表中匹配的对象，即最后两个对象；</p>
+<p>3.1.3. 用Java实现以下程序（语法和变量作用域处理都和JavaScript类似）：<br>代码：<br>var a = 1;<br>var b = 2;<br>var c = function() {<br>var a = 3;<br>println(a);<br>println(b);<br>};<br>c();<br>println(a);<br>println(b);<br>输出：<br>3<br>2<br>1<br>2<br>3.1.4. 参考资料<br><a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Abstract_syntax_tree</a><br><a href="https://javacc.java.net/" target="_blank" rel="noopener">https://javacc.java.net/</a><br><a href="http://www.antlr.org/" target="_blank" rel="noopener">http://www.antlr.org/</a><br>3.2. 操作系统知识<br>Ubuntu<br>Centos<br>使用linux，熟悉shell脚本<br>3.3. 数据存储知识</p>
+<p>3.3.1. 关系型数据库<br>MySQL<br>如何看执行计划<br>如何搭建MySQL主备<br>binlog是什么<br>Derby，H2，PostgreSQL<br>SQLite<br>3.3.2. NoSQL<br>Cache<br>Redis<br>Memcached<br>Leveldb<br>Bigtable<br>HBase<br>Cassandra<br>Mongodb<br>图数据库<br>neo4j<br>3.3.3. 参考资料<br><a href="http://db-engines.com/en/ranking" target="_blank" rel="noopener">http://db-engines.com/en/ranking</a><br><a href="http://redis.io/" target="_blank" rel="noopener">http://redis.io/</a><br><a href="https://code.google.com/p/leveldb/" target="_blank" rel="noopener">https://code.google.com/p/leveldb/</a><br><a href="http://hbase.apache.org/" target="_blank" rel="noopener">http://hbase.apache.org/</a><br><a href="http://cassandra.apache.org/" target="_blank" rel="noopener">http://cassandra.apache.org/</a><br><a href="http://www.mongodb.org/" target="_blank" rel="noopener">http://www.mongodb.org/</a><br><a href="http://www.neo4j.org/" target="_blank" rel="noopener">http://www.neo4j.org/</a><br>3.4. 大数据知识</p>
+<p>3.4.1. Zookeeper，在linux上部署zk<br>3.4.2. Solr，Lucene，ElasticSearch<br>在linux上部署solr，solrcloud，，新增、删除、查询索引<br>3.4.3. Storm，流式计算，了解Spark，S4<br>在linux上部署storm，用zookeeper做协调，运行storm hello world，local和remote模式运行调试storm topology。<br>3.4.4. Hadoop，离线计算<br>Hdfs：部署NameNode，SecondaryNameNode，DataNode，上传文件、打开文件、更改文件、删除文件<br>MapReduce：部署JobTracker，TaskTracker，编写mr job<br>Hive：部署hive，书写hive sql，得到结果<br>Presto：类hive，不过比hive快，非常值得学习<br>3.4.5. 分布式日志收集flume，kafka，logstash<br>3.4.6. 数据挖掘，mahout<br>3.4.7. 参考资料<br><a href="http://zookeeper.apache.org/" target="_blank" rel="noopener">http://zookeeper.apache.org/</a><br><a href="https://lucene.apache.org/solr/" target="_blank" rel="noopener">https://lucene.apache.org/solr/</a><br><a href="https://github.com/nathanmarz/storm/wiki" target="_blank" rel="noopener">https://github.com/nathanmarz/storm/wiki</a><br><a href="http://hadoop.apache.org/" target="_blank" rel="noopener">http://hadoop.apache.org/</a><br><a href="http://prestodb.io/" target="_blank" rel="noopener">http://prestodb.io/</a><br><a href="http://flume.apache.org/，http://logstash.net/，http://kafka.apache.org/" target="_blank" rel="noopener">http://flume.apache.org/，http://logstash.net/，http://kafka.apache.org/</a><br><a href="http://mahout.apache.org/" target="_blank" rel="noopener">http://mahout.apache.org/</a><br>3.5. 网络安全知识</p>
+<p>3.5.1. 什么是DES、AES<br>3.5.2. 什么是RSA、DSA<br>3.5.3. 什么是MD5，SHA1<br>3.5.4. 什么是SSL、TLS，为什么HTTPS相对比较安全<br>3.5.5. 什么是中间人攻击、如果避免中间人攻击<br>3.5.6. 什么是DOS、DDOS、CC攻击<br>3.5.7. 什么是CSRF攻击<br>3.5.8. 什么是CSS攻击<br>3.5.9. 什么是SQL注入攻击<br>3.5.10. 什么是Hash碰撞拒绝服务攻击<br>3.5.11. 了解并学习下面几种增强安全的技术</p>
+<p><a href="http://www.openauthentication.org/" target="_blank" rel="noopener">http://www.openauthentication.org/</a><br>HOTP <a href="http://www.ietf.org/rfc/rfc4226.txt" target="_blank" rel="noopener">http://www.ietf.org/rfc/rfc4226.txt</a><br>TOTP <a href="http://tools.ietf.org/rfc/rfc6238.txt" target="_blank" rel="noopener">http://tools.ietf.org/rfc/rfc6238.txt</a><br>OCRA <a href="http://tools.ietf.org/rfc/rfc6287.txt" target="_blank" rel="noopener">http://tools.ietf.org/rfc/rfc6287.txt</a><br><a href="http://en.wikipedia.org/wiki/Salt_(cryptography" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Salt_(cryptography</a>)<br>3.5.12. 用openssl签一个证书部署到apache或nginx<br>3.5.13. 参考资料<br><a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Cryptographic_hash_function</a><br><a href="http://en.wikipedia.org/wiki/Block_cipher" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Block_cipher</a><br><a href="http://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Public-key_cryptography</a><br><a href="http://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Transport_Layer_Security</a><br><a href="http://www.openssl.org/" target="_blank" rel="noopener">http://www.openssl.org/</a><br><a href="https://code.google.com/p/google-authenticator/" target="_blank" rel="noopener">https://code.google.com/p/google-authenticator/</a><br>四、 扩展篇</p>
+<p>4.1. 相关知识</p>
+<p>4.1.1. 云计算，分布式，高可用，可扩展<br>4.1.2. 虚拟化<br><a href="https://linuxcontainers.org/" target="_blank" rel="noopener">https://linuxcontainers.org/</a><br><a href="http://www.linux-kvm.org/page/Main_Page" target="_blank" rel="noopener">http://www.linux-kvm.org/page/Main_Page</a><br><a href="http://www.xenproject.org/" target="_blank" rel="noopener">http://www.xenproject.org/</a><br><a href="https://www.docker.io/" target="_blank" rel="noopener">https://www.docker.io/</a><br>4.1.3. 监控<br><a href="http://www.nagios.org/" target="_blank" rel="noopener">http://www.nagios.org/</a><br><a href="http://ganglia.info/" target="_blank" rel="noopener">http://ganglia.info/</a><br>4.1.4. 负载均衡<br><a href="http://www.linuxvirtualserver.org/" target="_blank" rel="noopener">http://www.linuxvirtualserver.org/</a><br>4.1.5. 学习使用git<br><a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a><br><a href="https://git.oschina.net/" target="_blank" rel="noopener">https://git.oschina.net/</a><br>4.1.6. 学习使用maven<br><a href="http://maven.apache.org/" target="_blank" rel="noopener">http://maven.apache.org/</a><br>4.1.7. 学习使用gradle<br><a href="http://www.gradle.org/" target="_blank" rel="noopener">http://www.gradle.org/</a><br>4.1.8. 学习一个小语种语言<br>Groovy<br>Scala<br>LISP, Common LISP, Schema, Clojure<br>R<br>Julia<br>Lua<br>Ruby<br>4.1.9. 尝试了解编码的本质</p>
+<p>了解以下概念<br>ASCII, ISO-8859-1<br>GB2312, GBK, GB18030<br>Unicode, UTF-8<br>不使用 String.getBytes() 等其他工具类/函数完成下面功能</p>
+<p>public static void main(String[] args) throws IOException {<br>String str = “Hello, 我们是中国人。”;<br>byte[] utf8Bytes = toUTF8Bytes(str);<br>FileOutputStream fos = new FileOutputStream(“f.txt”);<br>fos.write(utf8Bytes);<br>fos.close();<br>}<br>public static byte[] toUTF8Bytes(String str) {<br>return null; // TODO<br>}</p>
+<p>想一下上面的程序能不能写一个转GBK的？<br>写个程序自动判断一个文件是哪种编码<br>4.1.10. 尝试了解时间的本质<br>时区 &amp; 冬令时、夏令时<br><a href="http://en.wikipedia.org/wiki/Time_zone" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Time_zone</a><br>ftp://ftp.iana.org/tz/data/asia<br><a href="http://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B%E6%99%82%E5%8D%80" target="_blank" rel="noopener">http://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9C%8B%E6%99%82%E5%8D%80</a><br>闰年<br><a href="http://en.wikipedia.org/wiki/Leap_year" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Leap_year</a><br>闰秒<br>ftp://ftp.iana.org/tz/data/leapseconds<br>System.currentTimeMillis() 返回的时间是什么<br>4.1.11. 参考资料<br><a href="http://git-scm.com/" target="_blank" rel="noopener">http://git-scm.com/</a><br><a href="http://en.wikipedia.org/wiki/UTF-8" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/UTF-8</a><br><a href="http://www.iana.org/time-zones" target="_blank" rel="noopener">http://www.iana.org/time-zones</a><br>4.2. 扩展学习</p>
+<p>4.2.1. JavaScript知识<br>4.2.1.1. 什么是prototype<br>修改代码，使程序输出“1 3 5”：<br><a href="http://jsfiddle.net/Ts7Fk/" target="_blank" rel="noopener">http://jsfiddle.net/Ts7Fk/</a><br>4.2.1.2. 什么是闭包<br>看一下这段代码，并解释一下为什么按Button1时没有alert出“This is button: 1”，如何修改：<br><a href="http://jsfiddle.net/FDPj3/1/" target="_blank" rel="noopener">http://jsfiddle.net/FDPj3/1/</a><br>4.2.1.3. 了解并学习一个JS框架<br>jQuery<br>ExtJS<br>ArgularJS<br>4.2.1.4. 写一个Greasemonkey插件</p>
+<p><a href="http://en.wikipedia.org/wiki/Greasemonkey" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Greasemonkey</a><br>4.2.1.5. 学习node.js<br><a href="http://nodejs.org/" target="_blank" rel="noopener">http://nodejs.org/</a><br>4.2.2. 学习html5<br>ArgularJS，<a href="https://docs.angularjs.org/api" target="_blank" rel="noopener">https://docs.angularjs.org/api</a><br>4.2.3. 参考资料<br><a href="http://www.ecmascript.org/" target="_blank" rel="noopener">http://www.ecmascript.org/</a><br><a href="http://jsfiddle.net/" target="_blank" rel="noopener">http://jsfiddle.net/</a><br><a href="http://jsbin.com/" target="_blank" rel="noopener">http://jsbin.com/</a><br><a href="http://runjs.cn/" target="_blank" rel="noopener">http://runjs.cn/</a><br><a href="http://userscripts.org/" target="_blank" rel="noopener">http://userscripts.org/</a><br>五、 推荐书籍<br>《深入Java虚拟机》<br>《深入理解Java虚拟机》<br>《Effective Java》<br>《七周七语言》<br>《七周七数据》<br>《Hadoop技术内幕》<br>《Hbase In Action》<br>《Mahout In Action》<br>《这就是搜索引擎》<br>《Solr In Action》<br>《深入分析Java Web技术内幕》<br>《大型网站技术架构》<br>《高性能MySQL》<br>《算法导论》<br>《计算机程序设计艺术》<br>《代码大全》<br>《JavaScript权威指南》</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/24/Java工程师成神之路/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-say-something-to-myself" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/23/say-something-to-myself/">say something to myself</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/23/say-something-to-myself/" class="archive-article-date">
+  	<time datetime="2017-11-23T09:54:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-23</time>
 </a>
         
       </header>
@@ -297,11 +571,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>没有什么是办不到的，就怕就走是自己退缩了。</p>
-</blockquote>
-<p>这几天自己做了很多东西，在业务上和企业开发上有了新的进展。第一次写开源的东西，查看文档，然后自己搞出来，虽然以前都弄过，不过这是第一次在很快的时间内搞出来。第一次和别人一起对接一个业务，分析相关问题可能出现的情况。最后完成任务。解决BUG。<br>
+<p>好久没有写博客了，大概是没有时间，大概是懒吧。<br>在自己看来，时间还是很多的，要看你去做什么事情。</p>
+<p>这段时间，自己经历了很多，出去玩了一趟，请了几天的假，然后换了一家公司，在上家公司辞职后，这家公司上班前，发生了很多有趣的事情。<br>
         
-          <a class="article-more-a" href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/#more">more >></a>
+          <a class="article-more-a" href="/2017/11/23/say-something-to-myself/#more">more >></a>
         
       
 
@@ -325,7 +598,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/23/没有什么事情是办不到的，只怕你没法战胜自己/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/23/say-something-to-myself/">展开全文 >></a>
         </p>
       
 
@@ -355,20 +628,20 @@
 
 
   
-    <article id="post-感觉最近有点霉运" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-怀念那些我喜欢的经典" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/07/感觉最近有点霉运/">感觉最近有点霉运</a>
+      <a class="article-title" href="/2017/10/25/怀念那些我喜欢的经典/">怀念那些我喜欢的经典</a>
     </h1>
   
 
         
-        <a href="/2017/08/07/感觉最近有点霉运/" class="archive-article-date">
-  	<time datetime="2017-08-07T09:40:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
+        <a href="/2017/10/25/怀念那些我喜欢的经典/" class="archive-article-date">
+  	<time datetime="2017-10-25T09:53:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-25</time>
 </a>
         
       </header>
@@ -376,393 +649,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>感觉最近有点霉运啊……</p>
-</blockquote>
-<p>很难受啊，最近有点不顺，总是发生不该发生的事情，真的不知道怎么了，看来自己要多多注意了。<br>
-        
-          <a class="article-more-a" href="/2017/08/07/感觉最近有点霉运/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/07/感觉最近有点霉运/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-确实感觉还是有点小累的" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/04/确实感觉还是有点小累的/">确实感觉还是有点小累的</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/04/确实感觉还是有点小累的/" class="archive-article-date">
-  	<time datetime="2017-08-04T09:39:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前记得不知道是谁和我说过，我们这个职业很好，他们每天很累，然后我们整天坐在办公室里边，风吹不到，雨淋不到，日晒不到。薪水还高。<br>但是想想，这种工作也不一定是那种不累的工作。难道你对累不累的评论标准就是这几样嘛？<br>
-        
-          <a class="article-more-a" href="/2017/08/04/确实感觉还是有点小累的/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/04/确实感觉还是有点小累的/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-难受" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/01/难受/">难受</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/01/难受/" class="archive-article-date">
-  	<time datetime="2017-08-01T09:38:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>难受啊，我的阿寞永远离我而去了。想到故事的结局，没想到故事的情节。<br>
-        
-          <a class="article-more-a" href="/2017/08/01/难受/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/01/难受/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-感觉慢慢的步入正轨了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/31/感觉慢慢的步入正轨了/">感觉慢慢的步入正轨了</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/31/感觉慢慢的步入正轨了/" class="archive-article-date">
-  	<time datetime="2017-07-31T09:34:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>感觉慢慢的一切都步入正轨了，什么事情都急不得，慢慢来，但是也不能怠慢。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/07/31/感觉慢慢的步入正轨了/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/31/感觉慢慢的步入正轨了/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-每次写标题都很困难啊" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/24/每次写标题都很困难啊/">每次写标题都很困难啊</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/24/每次写标题都很困难啊/" class="archive-article-date">
-  	<time datetime="2017-07-24T09:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近比忙啊，终于把最近最重要的事情做完了，很开心，接下来应该就没有什么事情分心了。<br>还有些事情，很难受，慢慢来吧，在新公司一切都好。<br>
-        
-          <a class="article-more-a" href="/2017/07/24/每次写标题都很困难啊/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/24/每次写标题都很困难啊/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2017-07-18记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/18/2017-07-18记/">2017.07.18记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/18/2017-07-18记/" class="archive-article-date">
-  	<time datetime="2017-07-18T09:33:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>今天算是经过一次练习，算是对这个项目有了一定了解了。</p>
+<p>昨晚一时兴起，特别想看之前看过的一部电影，然后就下载了下来，当时已经是1点多了，然后还是禁不住看了起来，还是被故事中的人物和情节所感动。<br>希望自己也能够拥有那样的爱情吧。</p>
 </blockquote>
 
       
@@ -787,7 +674,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/18/2017-07-18记/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/25/怀念那些我喜欢的经典/">展开全文 >></a>
         </p>
       
 
@@ -817,32 +704,42 @@
 
 
   
-    <article id="post-停更ThinKing-in-Java的读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《Thinking-in-java》读书笔记-21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/11/停更ThinKing-in-Java的读书笔记/">停更ThinKing in Java的读书笔记</a>
+      <a class="article-title" href="/2017/10/24/《Thinking-in-java》读书笔记-21/">《Thinking in java》读书笔记(21)</a>
     </h1>
   
 
         
-        <a href="/2017/07/11/停更ThinKing-in-Java的读书笔记/" class="archive-article-date">
-  	<time datetime="2017-07-11T02:06:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
+        <a href="/2017/10/24/《Thinking-in-java》读书笔记-21/" class="archive-article-date">
+  	<time datetime="2017-10-24T05:58:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>停止更新ThinKing in Java的读书笔记了，因为刚刚入职新公司，有很多东西都需要学习，所以停止了Thinking in Java的阅读。但是等这一阵子过去，这本书是我第一本需要读完的书。</p>
+        <h1 id="第四章-控制执行流程"><a href="#第四章-控制执行流程" class="headerlink" title="第四章 控制执行流程"></a>第四章 控制执行流程</h1><p><strong>就像有知觉的生物一样，程序必须在执行过程中控制它的世界，并做出选择。在Java中，你要使用执行控制语句来做出选择。</strong><br>Java使用了C的所有流程控制语句，所以如果读者以前用过C或者C++编程，那么应该非常熟悉了，大多数过程编程语言都具有某些形式的控制语句，它们通常在各种语言间是交迭的。在Java中,涉及的关键字包括<strong>if-else、while、do-while、for、return、break</strong>以及选择语句<strong>switch</strong>。然而Java并不支持<strong>goto</strong>.</p>
+<h2 id="4-1true和false"><a href="#4-1true和false" class="headerlink" title="4.1true和false"></a>4.1true和false</h2><p>所有的语句都利用表达式的真假来决定是否执行。<br>在Java中不支持使用数字作为布尔值来使用。虽然在C和C++中是允许的。</p>
+<h2 id="4-2if-else"><a href="#4-2if-else" class="headerlink" title="4.2if-else"></a>4.2if-else</h2><p>if-else语句是控制程序流程中最基本的形式。其中else是可选的，所以可按下述两种形式来使用if:<br>if(Bollean-expression)<br>statement<br>或<br>if(Bollean-expression)<br>statement<br>else<br>statement</p>
+<p>其中布尔表达式必须产生布尔值。如下判断数大数小的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> alljavaexample;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> IfElse</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yaxuSong</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年10月24日 下午3:40:08 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IfElse</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> num1,<span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(num1&gt;=num2)</span><br><span class="line">			<span class="keyword">return</span> num1;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="keyword">return</span> num2;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(test(<span class="number">10</span>,<span class="number">5</span>));</span><br><span class="line">		System.out.println(test(<span class="number">6</span>,<span class="number">11</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>output:</p>
+<blockquote>
+<p>10<br>11</p>
 </blockquote>
-<p>刚刚加入了新公司，一开始害怕会有些不适应，但是第二天就觉得自己慢慢的融入进来了。公司很不错。但是也有对CSDN的怀念，哪里的人都很好。如果之前有机会留在那里的话，自己也肯定选择留在那。<br>新公司的项目还没有入手，但是希望自己能够尽快的投入到工作中去。<br>比较开心的就是，自己买了一个新电脑花了很多钱。也算是对工作的投入吧。不过电脑还没有收到呢，好期待啊。</p>
-<pre style="backgroundcolor:wheat;"><p style="color:deeppink;">   越努力，越幸运。</p>
-                                ----------送给自己</pre>
+<h2 id="4-3迭代"><a href="#4-3迭代" class="headerlink" title="4.3迭代"></a>4.3迭代</h2><p>while、do-while和for用来控制循环，有时将他们划分为迭代语句（iteration statement）。语句会重复执行，直到起控制作用的布尔表达式（Booleanexperssion）得到“假”的结果为止。<br>while循环到的格式如下：<br>while(Boolean-experssion)<br>statement</p>
+<h3 id="4-3-1-do-while"><a href="#4-3-1-do-while" class="headerlink" title="4.3.1 do-while"></a>4.3.1 do-while</h3><p>do-while的格式如下：<br>do<br>statement<br>while(Boolean-experssion);<br>while和do-while语句的区别就是do-while中的语句至少会执行一次。即便第一次表达式的值false，也会先执行一次。</p>
+<h3 id="4-3-2-for"><a href="#4-3-2-for" class="headerlink" title="4.3.2 for"></a>4.3.2 for</h3><p>for循环可能是最经常使用的迭代形式，这种在第一次迭代之前要进行初始化。随后，它会进行条件测试，而且在每一次迭代结束时，进行某种形式的“步进”，for循环格式如下:<br>for(initialization;Boolean-experssion;step)<br>statement<br>初始化（initialization）表达式、布尔表达式（Boolean-experssion）,或者步进（step）运算，都可以为空。每次迭代前会测试布尔表达式。若为true才会执行。</p>
+<h3 id="4-3-3-逗号操作符"><a href="#4-3-3-逗号操作符" class="headerlink" title="4.3.3 逗号操作符"></a>4.3.3 逗号操作符</h3><p>逗号操作符的作用是用来分隔函数的不同参数。<br>Java中唯一用到逗号操作符的地方就是for循环的控制表达式。在控制表达式的初始化和步进控制部分，可以使用一系列由逗号分隔的语句；而且那些语句会独立执行。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> alljavaexample;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> CommaOperator</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yaxuSong</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2017年10月24日 下午4:15:57</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> TODO</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CommaOperator</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = i + <span class="number">10</span>; i &lt; <span class="number">5</span>; i++, j = i * <span class="number">2</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"i = "</span> + i + <span class="string">" j = "</span> + j);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出：</p>
+<blockquote>
+<p>i = 1 j = 11<br>i = 2 j = 4<br>i = 3 j = 6<br>i = 4 j = 8</p>
+</blockquote>
 
       
 
@@ -858,6 +755,10 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -866,7 +767,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/11/停更ThinKing-in-Java的读书笔记/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/24/《Thinking-in-java》读书笔记-21/">展开全文 >></a>
         </p>
       
 
@@ -896,32 +797,29 @@
 
 
   
-    <article id="post-做决定看似简单其实很难" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-国庆快乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/05/做决定看似简单其实很难/">做决定看似简单其实很难</a>
+      <a class="article-title" href="/2017/10/01/国庆快乐/">国庆快乐</a>
     </h1>
   
 
         
-        <a href="/2017/07/05/做决定看似简单其实很难/" class="archive-article-date">
-  	<time datetime="2017-07-05T09:31:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
+        <a href="/2017/10/01/国庆快乐/" class="archive-article-date">
+  	<time datetime="2017-10-01T09:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>无论做出怎样的选择,路都需要自己走。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2017/07/05/做决定看似简单其实很难/#more">more >></a>
-        
+        <p>国庆快乐，马上就要回家的心情还是很激动的！</p>
+<p>当然也少不了中秋快乐。</p>
+
       
 
       
@@ -944,7 +842,173 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/05/做决定看似简单其实很难/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/01/国庆快乐/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《Thinking-in-java》读书笔记-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/30/《Thinking-in-java》读书笔记-20/">《Thinking in java》读书笔记(20)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/30/《Thinking-in-java》读书笔记-20/" class="archive-article-date">
+  	<time datetime="2017-09-30T05:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-14使用操作符时常犯的错误"><a href="#3-14使用操作符时常犯的错误" class="headerlink" title="3.14使用操作符时常犯的错误"></a>3.14使用操作符时常犯的错误</h2><p>使用操作符时一个常犯的错误就是，即使对表达式如何计算结果不确定，也不愿意使用括号。<br>这个问题在Java中仍然存在。<br>在C和C++中，一个特别常见的错误<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(x = y)&#123;</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很明显是“==”而不是“=”，但是因为C和C++的机制，如果y是一个非0值m,这会造成一个死循环。而在java中它期望的是一个boolean结果，而int不会转成boolean，自然会报错的。</p>
+<h2 id="3-15-类型转换器操作符"><a href="#3-15-类型转换器操作符" class="headerlink" title="3.15 类型转换器操作符"></a>3.15 类型转换器操作符</h2><p><strong>类型转换</strong>（cast）的原意就是“模型铸造”。在适当得时候，Java会将一种数据类型自动转换成另一种。例如，假设我们为浮点变量赋以一个整数值，编译器会自动将int转为float。类型转换允许我们显式地进行这种类型转换，或者在不能自动进行转换的时候进行强制转换。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">200</span>;</span><br><span class="line"><span class="keyword">long</span> lon= (<span class="keyword">long</span>)i;</span><br></pre></td></tr></table></figure></p>
+<p>在C和C++中，类型转换有时会让人头痛。但在Java中，类型转换则是一种比较安全的操作。然而，如果执行一种名为<strong>窄化转换</strong>（narrowing conversion）的操作（也就是说，将能容纳更多信息的数据类型转换成无法 容纳那么多信息的类型），就会可能面临信息丢失的危险。此时编译器会强制我们去进行类型转换。而对于<strong>扩展转换</strong>（widening conversion）,则不必进行显示转换。<br>Java允许我们把任何基本数据类型转换成别的基本数据类型，布尔类型除外。</p>
+<h3 id="3-15-1-截尾和舍入"><a href="#3-15-1-截尾和舍入" class="headerlink" title="3.15.1 截尾和舍入"></a>3.15.1 截尾和舍入</h3><p>在执行窄化转换时，必须注意截尾与舍入的问题。例如浮点型转整型。<br>29.7转化成int,结果不是30而是29。<br>因为float或者double转为整型时进行的是截尾，如果想要进行舍入需要使用<strong>java.lang.Math</strong>中的<strong>round()</strong>方法。</p>
+<h3 id="3-15-2-提升"><a href="#3-15-2-提升" class="headerlink" title="3.15.2 提升"></a>3.15.2 提升</h3><p>如果对基本数据类型执行算术运算或按位运算，大家会发现，只要类型比int小（char、byte、short），那么在运算前，这些值会自动转换成int。最终的结果也是int。如果想把结果赋值给小的类型，就必须使用类型转换。</p>
+<h2 id="3-16-Java没有sizeof"><a href="#3-16-Java没有sizeof" class="headerlink" title="3.16 Java没有sizeof"></a>3.16 Java没有sizeof</h2><p>在C和C++中，<strong>sizeof()</strong>操作符可以告诉我们数据项分配的字节数。在C和C++中，需要使用<strong>sizeof()</strong>的最大原因是为了“<strong>移植</strong>”。不同的数据类型在不同的机器上可能会有不同的大小。<br>Java不需要<strong>sizeof()</strong>是因为所有数据类型在所有机器的大小都是相同的。我们不必考虑移植问题——————因为它已经被设计在语言中了。</p>
+<h2 id="3-17-操作符小结"><a href="#3-17-操作符小结" class="headerlink" title="3.17 操作符小结"></a>3.17 操作符小结</h2><p>能够对布尔型值进行的运算非常有限。我们只能赋予它true和false值，并测试它为真还是为假，而不能将布尔值相加，或对布尔值进行其它运算。<br>我们要在类型的提升上多多关注。</p>
+<h2 id="3-18-总结"><a href="#3-18-总结" class="headerlink" title="3.18 总结"></a>3.18 总结</h2><p>这一张花了很多时间，主要是自己的时间不是很多，希望自己能在2018年之前看完一半吧。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/30/《Thinking-in-java》读书笔记-20/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《Thinking-in-java》读书笔记-19" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/27/《Thinking-in-java》读书笔记-19/">《Thinking in java》读书笔记(19)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/27/《Thinking-in-java》读书笔记-19/" class="archive-article-date">
+  	<time datetime="2017-09-27T05:58:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="3-11移位操作符"><a href="#3-11移位操作符" class="headerlink" title="3.11移位操作符"></a>3.11移位操作符</h2><p>移位操作符只可用来处理整数类型（基本类型的一种）。左移位操作符（&lt;&lt;）能按照操作符右侧指定的位数将操作符左边的操作数向左移动（在低位补0）。“有符号”右移操作符（&gt;&gt;）则按照操作符右侧指定的位数将操作符左边的操作数向右移。“有符号”右移位操作符使用“符号扩展”：若符号为正，则在高位插入0；若符号为负，则在高位插入1。Java中增加一种“无符号”右移位操作符（&gt;&gt;&gt;）,它使用“零扩展”：无论正负，都在高位插入0。这一操作符是C和C++中所没有的。<br>
+        
+          <a class="article-more-a" href="/2017/09/27/《Thinking-in-java》读书笔记-19/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/27/《Thinking-in-java》读书笔记-19/">展开全文 >></a>
         </p>
       
 
@@ -976,7 +1040,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1092,11 +1156,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,6 +1173,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-Java</a>
               </li>
             
             <div class="clearfix"></div>

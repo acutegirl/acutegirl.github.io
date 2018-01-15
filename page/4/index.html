@@ -197,29 +197,346 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-《Thinking-in-java》读书笔记-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《Thinking-in-java》读书笔记-15" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/07/《Thinking-in-java》读书笔记-4/">《Thinking in java》读书笔记(4)</a>
+      <a class="article-title" href="/2017/08/01/《Thinking-in-java》读书笔记-15/">《Thinking in java》读书笔记(15)</a>
     </h1>
   
 
         
-        <a href="/2017/06/07/《Thinking-in-java》读书笔记-4/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:59:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
+        <a href="/2017/08/01/《Thinking-in-java》读书笔记-15/" class="archive-article-date">
+  	<time datetime="2017-08-01T05:43:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-对象导论"><a href="#第一章-对象导论" class="headerlink" title="第一章 对象导论"></a>第一章 对象导论</h1><h2 id="1-9容器"><a href="#1-9容器" class="headerlink" title="1.9容器"></a>1.9容器</h2><p>当在解决某个特定问题需要创建多少个对象，或者它们将存活多少时间，那么久不可能知道如何存储这些对象。如何才能知道需要多少空间来创建这些对象呢？<br>
+        <h1 id="第三章-操作符"><a href="#第三章-操作符" class="headerlink" title="第三章 操作符"></a>第三章 操作符</h1><h2 id="3-5算术操作符"><a href="#3-5算术操作符" class="headerlink" title="3.5算术操作符"></a>3.5算术操作符</h2><p>Java的基本算数操作符与其他大多数的程序设计语言时相同的。其中有：+、-、/、*、%。整数除法会直接去掉结果的小数位，而不是四舍五入的结果。<br>Java也使用一种来自C和C++的简化符号同时进行运算与赋值的操作。这要操作符后边紧跟一个等号来表示。<br>如：X+=4。</p>
+<p>下面这个例子展示了各种算术操作符的用法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> MathOps</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yaxuSong</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MathOps</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		<span class="comment">// Create a seeded random number generator:</span></span><br><span class="line">		Random rand = <span class="keyword">new</span> Random(<span class="number">47</span>);</span><br><span class="line">		<span class="keyword">int</span> i, j, k;</span><br><span class="line">		<span class="comment">// Choose a value from 1 to 100:</span></span><br><span class="line">		j = rand.nextInt(<span class="number">100</span>) + <span class="number">1</span>;</span><br><span class="line">		System.out.println(<span class="string">"j : "</span> + j);</span><br><span class="line">		k = rand.nextInt(<span class="number">100</span>) + <span class="number">1</span>;</span><br><span class="line">		System.out.println(<span class="string">"k : "</span> + k);</span><br><span class="line">		i = j + k;</span><br><span class="line">		System.out.println(<span class="string">"j + k : "</span> + i);</span><br><span class="line">		i = j - k;</span><br><span class="line">		System.out.println(<span class="string">"j - k : "</span> + i);</span><br><span class="line">		i = k / j;</span><br><span class="line">		System.out.println(<span class="string">"j / k : "</span> + i);</span><br><span class="line">		i = k * j;</span><br><span class="line">		System.out.println(<span class="string">"j * k : "</span> + i);</span><br><span class="line">		i = k % j;</span><br><span class="line">		System.out.println(<span class="string">"j % k : "</span> + i);</span><br><span class="line">		j %= k;</span><br><span class="line">		System.out.println(<span class="string">"j %= k : "</span> + j);</span><br><span class="line">		<span class="comment">// Floating-point number tests:</span></span><br><span class="line">		<span class="keyword">float</span> u, v, w; <span class="comment">// Applies to doubles, too</span></span><br><span class="line">		v = rand.nextFloat();</span><br><span class="line">		System.out.println(<span class="string">"v : "</span> + v);</span><br><span class="line">		w = rand.nextFloat();</span><br><span class="line">		System.out.println(<span class="string">"w : "</span> + w);</span><br><span class="line">		u = v + w;</span><br><span class="line">		System.out.println(<span class="string">"v + w : "</span> + u);</span><br><span class="line">		u = v - w;</span><br><span class="line">		System.out.println(<span class="string">"v - w : "</span> + u);</span><br><span class="line">		u = v * w;</span><br><span class="line">		System.out.println(<span class="string">"v * w : "</span> + u);</span><br><span class="line">		u = v / w;</span><br><span class="line">		System.out.println(<span class="string">"v / w : "</span> + u);</span><br><span class="line">		u += v;</span><br><span class="line">		System.out.println(<span class="string">"u += v : "</span> + u);</span><br><span class="line">		u -= v;</span><br><span class="line">		System.out.println(<span class="string">"u -= v : "</span> + u);</span><br><span class="line">		u *= v;</span><br><span class="line">		System.out.println(<span class="string">"u *= v : "</span> + u);</span><br><span class="line">		u /= v;</span><br><span class="line">		System.out.println(<span class="string">"u /= v : "</span> + u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>程序输出Output：</p>
+<blockquote>
+<p>j : 59<br>k : 56<br>j + k : 115<br>j - k : 3<br>j / k : 0<br>j <em> k : 3304<br>j % k : 56<br>j %= k : 3<br>v : 0.5309454<br>w : 0.0534122<br>v + w : 0.5843576<br>v - w : 0.47753322<br>v </em> w : 0.028358962<br>v / w : 9.940527<br>u += v : 10.471473<br>u -= v : 9.940527<br>u *= v : 5.2778773<br>u /= v : 9.940527</p>
+</blockquote>
+<p>要生成数字，程序首先会创建一个Random类的对象。如果在创建过程中没有传递任何参数，那么Java就会将当前时间作为随机数生产器的种子，并由此程序每一次执行都产生不同的结果。<em>（用于随机数生成器的初始化值，随机数生产器对于特定的种子值总是产生相同的随机数序列。）</em></p>
+<h3 id="3-5-1一元加、减操作符"><a href="#3-5-1一元加、减操作符" class="headerlink" title="3.5.1一元加、减操作符"></a>3.5.1一元加、减操作符</h3><p>一元加号(+)和减号(-)与二元减号加号用相同的符号。如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = -a;</span><br></pre></td></tr></table></figure></p>
+<p>一元减号用于转变数据的符号，而一元加号只是为了与一元减号想对应，但是它唯一的作用仅仅是将较小的类型的操作数提升为int.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/01/《Thinking-in-java》读书笔记-15/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-          <a class="article-more-a" href="/2017/06/07/《Thinking-in-java》读书笔记-4/#more">more >></a>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-感觉慢慢的步入正轨了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/31/感觉慢慢的步入正轨了/">感觉慢慢的步入正轨了</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/31/感觉慢慢的步入正轨了/" class="archive-article-date">
+  	<time datetime="2017-07-31T09:34:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>感觉慢慢的一切都步入正轨了，什么事情都急不得，慢慢来，但是也不能怠慢。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/07/31/感觉慢慢的步入正轨了/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/31/感觉慢慢的步入正轨了/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-每次写标题都很困难啊" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/24/每次写标题都很困难啊/">每次写标题都很困难啊</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/24/每次写标题都很困难啊/" class="archive-article-date">
+  	<time datetime="2017-07-24T09:34:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近比忙啊，终于把最近最重要的事情做完了，很开心，接下来应该就没有什么事情分心了。<br>还有些事情，很难受，慢慢来吧，在新公司一切都好。<br>
+        
+          <a class="article-more-a" href="/2017/07/24/每次写标题都很困难啊/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/24/每次写标题都很困难啊/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2017-07-18记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/18/2017-07-18记/">2017.07.18记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/18/2017-07-18记/" class="archive-article-date">
+  	<time datetime="2017-07-18T09:33:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>今天算是经过一次练习，算是对这个项目有了一定了解了。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/18/2017-07-18记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《Thinking-in-java》读书笔记-14" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/14/《Thinking-in-java》读书笔记-14/">《Thinking in java》读书笔记(14)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/14/《Thinking-in-java》读书笔记-14/" class="archive-article-date">
+  	<time datetime="2017-07-14T05:36:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第三章-操作符"><a href="#第三章-操作符" class="headerlink" title="第三章 操作符"></a>第三章 操作符</h1><h2 id="3-4赋值"><a href="#3-4赋值" class="headerlink" title="3.4赋值"></a>3.4赋值</h2><p>赋值使用操作符“=”，它的意思是将右边的值，赋值给左边。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">4</span>;</span><br></pre></td></tr></table></figure></p>
+<p>对基本对象的赋值是简单的，基本类型存储了实际的值，而并非指向一个对象的引用。如a=b，那么b的值就给了a，但是修改a之后，b不受影响。<br>
+        
+          <a class="article-more-a" href="/2017/07/14/《Thinking-in-java》读书笔记-14/#more">more >></a>
         
       
 
@@ -247,7 +564,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/07/《Thinking-in-java》读书笔记-4/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/14/《Thinking-in-java》读书笔记-14/">展开全文 >></a>
         </p>
       
 
@@ -277,20 +594,20 @@
 
 
   
-    <article id="post-决定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-停更ThinKing-in-Java的读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/07/决定/">决定</a>
+      <a class="article-title" href="/2017/07/11/停更ThinKing-in-Java的读书笔记/">停更ThinKing in Java的读书笔记</a>
     </h1>
   
 
         
-        <a href="/2017/06/07/决定/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:26:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
+        <a href="/2017/07/11/停更ThinKing-in-Java的读书笔记/" class="archive-article-date">
+  	<time datetime="2017-07-11T02:06:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-11</time>
 </a>
         
       </header>
@@ -298,11 +615,89 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>每个人的想法都是不同的，但是请不要把你的想法灌输给别人。</p>
+<p>停止更新ThinKing in Java的读书笔记了，因为刚刚入职新公司，有很多东西都需要学习，所以停止了Thinking in Java的阅读。但是等这一阵子过去，这本书是我第一本需要读完的书。</p>
 </blockquote>
-<p>有一句话叫既来之，则安之。为什么你来着工作却不认真，其实每一份工作都一样，无论正式还是实习。都要脚踏实地的去做。这是态度，和其它无关。<br>
+<p>刚刚加入了新公司，一开始害怕会有些不适应，但是第二天就觉得自己慢慢的融入进来了。公司很不错。但是也有对CSDN的怀念，哪里的人都很好。如果之前有机会留在那里的话，自己也肯定选择留在那。<br>新公司的项目还没有入手，但是希望自己能够尽快的投入到工作中去。<br>比较开心的就是，自己买了一个新电脑花了很多钱。也算是对工作的投入吧。不过电脑还没有收到呢，好期待啊。</p>
+<pre style="backgroundcolor:wheat;"><p style="color:deeppink;">   越努力，越幸运。</p>
+                                ----------送给自己</pre>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/11/停更ThinKing-in-Java的读书笔记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-          <a class="article-more-a" href="/2017/06/07/决定/#more">more >></a>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-做决定看似简单其实很难" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/05/做决定看似简单其实很难/">做决定看似简单其实很难</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/05/做决定看似简单其实很难/" class="archive-article-date">
+  	<time datetime="2017-07-05T09:31:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>无论做出怎样的选择,路都需要自己走。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/07/05/做决定看似简单其实很难/#more">more >></a>
         
       
 
@@ -326,7 +721,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/07/决定/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/07/05/做决定看似简单其实很难/">展开全文 >></a>
         </p>
       
 
@@ -356,29 +751,30 @@
 
 
   
-    <article id="post-《Thinking in java》读书笔记-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《Thinking-in-java》读书笔记-13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/06/《Thinking in java》读书笔记-3/">《Thinking in java》读书笔记(3)</a>
+      <a class="article-title" href="/2017/06/23/《Thinking-in-java》读书笔记-13/">《Thinking-in-java》读书笔记(13)</a>
     </h1>
   
 
         
-        <a href="/2017/06/06/《Thinking in java》读书笔记-3/" class="archive-article-date">
-  	<time datetime="2017-06-06T15:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
+        <a href="/2017/06/23/《Thinking-in-java》读书笔记-13/" class="archive-article-date">
+  	<time datetime="2017-06-23T02:01:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-对象导论"><a href="#第一章-对象导论" class="headerlink" title="第一章 对象导论"></a>第一章 对象导论</h1><h2 id="1-7伴随多态的可互换对象"><a href="#1-7伴随多态的可互换对象" class="headerlink" title="1.7伴随多态的可互换对象"></a>1.7伴随多态的可互换对象</h2><p>在处理类型的层次结构时，经常想把一个对象不当做它所属的特定类型来对待，而是将其当做其基类来看待。<br>在“几何形”的例子中，方法操作都是泛化（generic）的形状,而不关心它们是哪种几何图形。<br>
+        <h1 id="第三章-操作符"><a href="#第三章-操作符" class="headerlink" title="第三章 操作符"></a>第三章 操作符</h1><p>在最底层，Java中的数据是通过使用操作符来操做的。<br>Java是建立在C++基础之上的，所哟C和C++程序员应该非常熟悉Java的大多数操作符。当然，Java也做了一些改进与简化。</p>
+<h2 id="3-1更简单的打印语句"><a href="#3-1更简单的打印语句" class="headerlink" title="3.1更简单的打印语句"></a>3.1更简单的打印语句</h2><p>前一章中，我们介绍了Java的打印句：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"Rather a lot of type"</span>);</span><br></pre></td></tr></table></figure></p>
         
-          <a class="article-more-a" href="/2017/06/06/《Thinking in java》读书笔记-3/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/23/《Thinking-in-java》读书笔记-13/#more">more >></a>
         
       
 
@@ -406,7 +802,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/06/《Thinking in java》读书笔记-3/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/23/《Thinking-in-java》读书笔记-13/">展开全文 >></a>
         </p>
       
 
@@ -436,105 +832,29 @@
 
 
   
-    <article id="post-听完这首歌忘记所有的一切" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《Thinking-in-java》读书笔记-12" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/05/听完这首歌忘记所有的一切/">听完这首歌忘记所有的一切</a>
+      <a class="article-title" href="/2017/06/22/《Thinking-in-java》读书笔记-12/">《Thinking in java》读书笔记(12)</a>
     </h1>
   
 
         
-        <a href="/2017/06/05/听完这首歌忘记所有的一切/" class="archive-article-date">
-  	<time datetime="2017-06-05T09:22:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-05</time>
+        <a href="/2017/06/22/《Thinking-in-java》读书笔记-12/" class="archive-article-date">
+  	<time datetime="2017-06-22T03:48:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="多幸运"><a href="#多幸运" class="headerlink" title="多幸运"></a>多幸运</h2><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=35847037&auto=0&height=66"></iframe>
+        <h2 id="2-10总结"><a href="#2-10总结" class="headerlink" title="2.10总结"></a>2.10总结</h2><p>花了不算多的时间吧第二章看完了，毕竟自己有一定的基础，所以这些东西看的比较快，有些东西自己之前确实没有注意过，不过通过学习这一章，自己了解了很多更加基础的东西，希望自己再接再厉吧。加油把这本书看完了，然后去看别的书，这本书是我第一本看的这么详细的书。<br>最近工作的事情总算有了眉目，觉得还是小有收获吧。挺开心的，然后昨天是自己的生日，自己竟然不记得了。。。。还在高兴地看自己昨天刚到的新书。算是过了一个生日吧。<br>
         
-          <a class="article-more-a" href="/2017/06/05/听完这首歌忘记所有的一切/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/05/听完这首歌忘记所有的一切/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-《Thinking in java》读书笔记-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/04/《Thinking in java》读书笔记-2/">《Thinking in java》读书笔记(2)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/04/《Thinking in java》读书笔记-2/" class="archive-article-date">
-  	<time datetime="2017-06-04T15:39:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第一章-对象导论"><a href="#第一章-对象导论" class="headerlink" title="第一章 对象导论"></a>第一章 对象导论</h1><h2 id="1-3每个对象都提供服务"><a href="#1-3每个对象都提供服务" class="headerlink" title="1.3每个对象都提供服务"></a>1.3每个对象都提供服务</h2><p>理解或者开发一个程序的时候，做好的方法之一就是将对象想象为“<strong>服务提供者</strong>”。<br>
-        
-          <a class="article-more-a" href="/2017/06/04/《Thinking in java》读书笔记-2/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/22/《Thinking-in-java》读书笔记-12/#more">more >></a>
         
       
 
@@ -562,7 +882,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/04/《Thinking in java》读书笔记-2/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/22/《Thinking-in-java》读书笔记-12/">展开全文 >></a>
         </p>
       
 
@@ -592,32 +912,29 @@
 
 
   
-    <article id="post-《Thinking in java》读书笔记-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-《Thinking-in-java》读书笔记-11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/01/《Thinking in java》读书笔记-1/">《Thinking in java》读书笔记(1)</a>
+      <a class="article-title" href="/2017/06/22/《Thinking-in-java》读书笔记-11/">《Thinking in java》读书笔记(11)</a>
     </h1>
   
 
         
-        <a href="/2017/06/01/《Thinking in java》读书笔记-1/" class="archive-article-date">
-  	<time datetime="2017-06-01T15:58:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
+        <a href="/2017/06/22/《Thinking-in-java》读书笔记-11/" class="archive-article-date">
+  	<time datetime="2017-06-22T03:27:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>第一章 1.1-1.2</p>
-</blockquote>
-<h1 id="第一章-对象导论"><a href="#第一章-对象导论" class="headerlink" title="第一章 对象导论"></a>第一章 对象导论</h1><p>其中前言说到<strong>OOP</strong>是计算机表达媒体的重要组成部分，说到本章将讲解<strong>OOP</strong>的编程方法和编程理论。<br>
+        <h1 id="第二章-一切都是对象"><a href="#第二章-一切都是对象" class="headerlink" title="第二章 一切都是对象"></a>第二章 一切都是对象</h1><h2 id="2-7你的第一个Java程序"><a href="#2-7你的第一个Java程序" class="headerlink" title="2.7你的第一个Java程序"></a>2.7你的第一个Java程序</h2><p>最后，让我们编写第一个完整的程序。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HelloDate.java</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloDate</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello, it's: "</span>);</span><br><span class="line">		System.out.println(<span class="keyword">new</span> Date());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
         
-          <a class="article-more-a" href="/2017/06/01/《Thinking in java》读书笔记-1/#more">more >></a>
+          <a class="article-more-a" href="/2017/06/22/《Thinking-in-java》读书笔记-11/#more">more >></a>
         
       
 
@@ -645,325 +962,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/01/《Thinking in java》读书笔记-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-六一儿童节快乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/01/六一儿童节快乐/">六一儿童节快乐</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/01/六一儿童节快乐/" class="archive-article-date">
-  	<time datetime="2017-06-01T09:21:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>6.1儿童节快乐^-^。</p>
-</blockquote>
-<p>时间过得很快啊，一年已经过去了一半啦，今天给自己开启一个新的里程碑。新的合租生活的开始，新的体验的开始。新的计划的开始。<br>
-        
-          <a class="article-more-a" href="/2017/06/01/六一儿童节快乐/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/01/六一儿童节快乐/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-The-mood-may-be-better" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/31/The-mood-may-be-better/">The mood may be better</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/31/The-mood-may-be-better/" class="archive-article-date">
-  	<time datetime="2017-05-31T09:15:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>搬家啊，不算麻烦。</p>
-</blockquote>
-<p>本想着搬家一定很麻烦，没有想到还算轻松。想想自己一开始来的时候，那才叫一个麻烦呢。每天都背着一大书包的书、电脑、衣服，满北京的找工作。真心辛苦，但是不知道自己是怎样熬过那两个星期的。想想也是很佩服自己。</p>
-<p>虽然自己一个人生活很艰苦，但是觉得还是很不错的，和别人住在一起有很多不便，也不方便自己学习。发现自己还是适合一个人，这样能让自己冷静下来学习。</p>
-<p><img src="/img/wangjing.jpg" alt="望京"><br>在这么一个繁华的大都市，想要站稳了，需要付出的努力是很多的。不仅仅是找工作那么点点的辛苦，更多的是在夜深人静时的认真学习、在酷暑下的认真工作、在生活中的认真做人、脚踏实地的认真做事。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/31/The-mood-may-be-better/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-NoTitle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/27/NoTitle/">NoTitle</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/27/NoTitle/" class="archive-article-date">
-  	<time datetime="2017-05-27T09:13:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>因为之前有一段时间没在公司，而是回学校忙毕设，所以没有更新博客。</p>
-</blockquote>
-<p>今天真的是，哎<strong>╮(╯▽╰)╭</strong>，不知道怎么说，早晨还在等7点钟的闹铃，却忘记今天是周六，没有闹铃的，因为下周二端午节的关系，所以今天需要上班，而我的闹铃只有周一到周有，所以是等不到了，幸好室友在7：30的时候提醒了我，不然肯定要迟到（结果还是迟到了…..）。</p>
-<p>说句实在话，其实7：40出来都不会迟到，无奈今天公交堵得水泄不通，而我看见了，但是因为自己有点累，所以不想骑自行车去坐地铁，结果就走上了迟到的不归路。整整是堵了1个小时…..<br>
-        
-          <a class="article-more-a" href="/2017/05/27/NoTitle/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/27/NoTitle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-努力吧，少年" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/26/努力吧，少年/">努力吧，少年</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/26/努力吧，少年/" class="archive-article-date">
-  	<time datetime="2017-05-26T09:11:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>看了再多也没有用，想了再多也是白想。</p>
-</blockquote>
-<p>现在的自己应该已经认识到那些事情是不可能的了，让自己不要再去想了，总之慢慢的自己会选择放弃吧，也许也会选择坚持，但是自己知道坚持的结果就是，她不会和你在一起的。</p>
-<p>总是要放弃的吧，专注自己的事业，不要把心思放在她身上。那些东西都会是虚无缥缈的，自己之前对她做了这么多，最后换来的还不是这样的结果。<br>
-        
-          <a class="article-more-a" href="/2017/05/26/努力吧，少年/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/26/努力吧，少年/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/22/《Thinking-in-java》读书笔记-11/">展开全文 >></a>
         </p>
       
 
@@ -995,7 +994,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -1111,11 +1110,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">ATLASSIAN产品安装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1128,6 +1127,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-Java</a>
               </li>
             
             <div class="clearfix"></div>
